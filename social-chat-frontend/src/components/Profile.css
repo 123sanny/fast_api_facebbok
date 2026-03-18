@@ -1,0 +1,390 @@
+.profile {
+  background: #f0f2f5;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+/* Cover Photo */
+.cover img {
+  width: 100%;
+  height: 250px; /* थोड़ा बड़ा किया */
+  object-fit: cover;
+}
+
+/* Profile Info */
+.profile-info {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  margin-top: -100px; /* profile pic overlap ठीक करने के लिए */
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Profile Picture */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-top: -60px;
+  background: white;
+}
+
+/* Name & Bio */
+.profile-info h2 {
+  margin-top: 10px;
+}
+
+.bio {
+  color: gray;
+  font-size: 14px;
+}
+
+/* Buttons */
+.profile-buttons {
+  background: white;
+  padding: 15px;
+  text-align: center;
+  margin-top: -20px; /* overlap fix */
+}
+
+.blue {
+  background: #1877f2;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 90%;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.small-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.small-btns button {
+  padding: 8px 15px;
+  border: none;
+  background: #536aa4;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.tabs span {
+  color: gray;
+}
+
+.tabs .active {
+  color: #1877f2;
+  font-weight: bold;
+}
+.details h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #1877f2; /* blue color like Facebook edit */
+  transition: transform 0.2s;
+}
+
+.edit-icon:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+  .cover img {
+    height: 180px;
+  }
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Friends Section */
+.friends-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.see-all{
+color:#1877f2;
+font-size:14px;
+cursor:pointer;
+}
+
+/* Mobile → horizontal scroll */
+.friends-row{
+display:flex;
+gap:15px;
+overflow-x:auto;
+padding-bottom:10px;
+}
+
+.friend{
+text-align:center;
+min-width:80px;
+}
+
+.friend img{
+width:60px;
+height:60px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #1877f2;
+}
+
+.friend p{
+font-size:13px;
+margin:4px 0 0;
+font-weight:500;
+}
+
+.friend span{
+font-size:11px;
+color:gray;
+}
+
+/* Post Box */
+.post-box{
+background:#fff;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+box-shadow:0 1px 3px rgba(0,0,0,0.1);
+}
+
+.post-box input{
+width:100%;
+padding:10px;
+border-radius:20px;
+border:1px solid #ddd;
+outline:none;
+margin-bottom:10px;
+}
+
+.post-options{
+display:flex;
+gap:10px;
+}
+
+.post-options button{
+flex:1;
+padding:8px;
+border:none;
+border-radius:8px;
+background:#f0f2f5;
+cursor:pointer;
+font-weight:500;
+}
+
+.reel{
+color:red;
+}
+
+.live{
+color:#1877f2;
+}
+
+/* -------- Tablet -------- */
+@media (min-width:768px){
+
+.friends-row{
+flex-wrap:wrap;
+overflow-x:visible;
+justify-content:flex-start;
+}
+
+.friend{
+min-width:100px;
+}
+
+.friend img{
+width:70px;
+height:70px;
+}
+
+.post-box{
+max-width:700px;
+margin:auto;
+}
+
+}
+
+/* -------- Desktop -------- */
+@media (min-width:1024px){
+
+.friends-row{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:20px;
+}
+
+.friend{
+min-width:auto;
+}
+
+.friend img{
+width:80px;
+height:80px;
+}
+
+.post-box{
+max-width:9000px;
+margin:auto;
+padding:20px;
+}
+
+}
+
+/* All Posts Section */
+
+.all-posts{
+background:#fff;
+margin-top:15px;
+padding:15px;
+border-radius:10px;
+}
+
+.post-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.post-header h3{
+margin:0;
+}
+
+.filter{
+color:#1877f2;
+cursor:pointer;
+font-size:14px;
+}
+
+/* Input Row */
+
+.post-input{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+
+.post-input img{
+width:40px;
+height:40px;
+border-radius:50%;
+}
+
+.post-input input{
+flex:1;
+border:none;
+outline:none;
+font-size:15px;
+}
+
+.photo-icon{
+font-size:20px;
+color:green;
+}
+
+/* Reel Live Buttons */
+
+.post-actions{
+display:flex;
+gap:10px;
+padding:15px 0;
+border-bottom:1px solid #eee;
+}
+
+.post-actions button{
+flex:1;
+padding:8px;
+border:none;
+border-radius:20px;
+background:#f0f2f5;
+cursor:pointer;
+font-weight:500;
+}
+
+.reel-btn{
+color:red;
+}
+
+.live-btn{
+color:#1877f2;
+}
+
+/* Manage Posts */
+
+.manage-posts{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#e4e6eb;
+font-weight:600;
+cursor:pointer;
+}
+
+.post-top{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.post-profile{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.post-user-info{
+flex:1;
+}
+
+.post-user-info h4{
+margin:0;
+font-size:15px;
+}
+
+.post-meta{
+display:flex;
+gap:6px;
+font-size:12px;
+color:gray;
+}
+
+.post-menu{
+font-size:22px;
+cursor:pointer;
+color:gray;
+}
+

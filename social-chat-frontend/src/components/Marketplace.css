@@ -1,0 +1,136 @@
+.marketplace-container {
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  max-width: 600px; 
+  margin: 0 auto;
+}
+
+.market-header {
+  padding: 10px 15px;
+}
+
+.market-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.left-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.left-head h1 {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.right-head {
+  display: flex;
+  gap: 15px;
+  font-size: 22px;
+}
+
+.market-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.market-btn {
+  flex: 1;
+  background-color: #e4e6eb;
+  border: none;
+  padding: 10px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.market-divider {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.picks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.picks-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.location {
+  color: #0866ff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 4px; 
+  padding: 5px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.img-wrapper img {
+  width: 100%;
+  aspect-ratio: 1/1; 
+  object-fit: cover;
+}
+
+.product-details {
+  padding: 8px 5px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #65676b;
+  font-weight: 400;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.p-name {
+  font-weight: 400;
+  color: #050505;
+}
+
+@media (min-width: 768px) {
+  .marketplace-container {
+    max-width: 100%;
+  }
+  .products-grid {
+    grid-template-columns: 1fr 1fr 1fr; 
+  }
+}

@@ -1,0 +1,104 @@
+/* Menu bar container */
+
+.menu-bar{
+width:100%;
+background:white;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+/* icons row */
+
+.menu-icons{
+display:flex;
+justify-content:space-around;
+align-items:center;
+/* max-width:900px; */
+margin:auto;
+}
+
+/* links */
+
+.menu-icons a{
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+padding:12px 20px;
+border-radius:8px;
+flex:1;
+}
+
+/* icon size */
+
+.menu-icons i{
+font-size:24px;
+color:black;
+}
+
+/* active tab */
+
+.menu-icons a.active i{
+color:#1877f2;
+border-bottom:3px solid #1877f2;
+padding-bottom:5px;
+}
+
+/* hover */
+
+.menu-icons a:hover{
+background:#f0f2f5;
+}
+
+/* profile */
+
+.header-profile{
+width:32px;
+height:32px;
+border-radius:50%;
+object-fit:cover;
+}
+
+
+/* -------- Tablet -------- */
+
+@media (max-width:768px){
+
+.menu-icons a{
+padding:10px;
+}
+
+.menu-icons i{
+font-size:22px;
+}
+
+.header-profile{
+width:30px;
+height:30px;
+}
+
+}
+
+
+/* -------- Mobile -------- */
+
+@media (max-width:480px){
+
+.menu-icons{
+justify-content:space-between;
+padding:0 10px;
+}
+
+.menu-icons i{
+font-size:20px;
+}
+
+.header-profile{
+width:28px;
+height:28px;
+}
+
+}
