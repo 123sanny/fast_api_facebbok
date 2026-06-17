@@ -1,0 +1,404 @@
+/* =========================================
+   FACEBOOK EDIT PROFILE UI
+========================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f0f2f5;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+.ep-container{
+  background:#fff;
+  min-height:100vh;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+.ep-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 16px;
+  border-bottom: 1px solid #e4e6ea;
+}
+
+.ep-back-btn,
+.ep-header-space {
+  width: 40px;
+  height: 40px;
+}
+
+.ep-back-btn {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ep-back-btn svg {
+  font-size: 28px;
+  color: #050505;
+}
+
+.ep-header h2 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: #050505;
+}
+
+/* =========================================
+   COVER SECTION
+========================================= */
+
+.ep-cover-section{
+  position:relative;
+  margin:20px 16px 85px;
+}
+
+.ep-cover-wrapper{
+  position:relative;
+}
+
+.ep-cover-img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:30px;
+  display:block;
+}
+
+/* =========================================
+   CAMERA BUTTONS
+========================================= */
+
+.ep-camera-btn{
+  position:absolute;
+  border:none;
+  border-radius:50%;
+  background:#e4e6eb;
+  color:#050505;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+
+.ep-cover-cam{
+  width:52px;
+  height:52px;
+  right:14px;
+  bottom:14px;
+  font-size:20px;
+}
+
+.ep-avatar-cam{
+  width:42px;
+  height:42px;
+  right:0;
+  bottom:0;
+  font-size:18px;
+  border:3px solid #fff;
+}
+
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.ep-avatar-wrapper{
+  position:absolute;
+  left:25px;
+  bottom:-65px;
+  width:140px;
+  height:140px;
+}
+
+.ep-avatar-img{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:50%;
+  border:5px solid #fff;
+  background:#fff;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+.ep-body{
+  padding-bottom:30px;
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.ep-section{
+  margin-top:10px;
+}
+
+.ep-section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px 10px;
+}
+
+.ep-section-header h3{
+  font-size:20px;
+  font-weight:700;
+}
+
+.ep-toggle-icon{
+  font-size:22px;
+  cursor:pointer;
+}
+
+.ep-section-body{
+  padding:0 20px;
+}
+
+/* =========================================
+   ITEMS
+========================================= */
+
+.ep-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.ep-item-align-start{
+  align-items:flex-start;
+}
+
+.ep-item-left{
+  display:flex;
+  gap:15px;
+  flex:1;
+}
+
+.ep-item-icon{
+  font-size:26px;
+  color:#050505;
+  min-width:28px;
+}
+
+.ep-item-text{
+  display:flex;
+  flex-direction:column;
+}
+
+.ep-item-main{
+  font-size:18px;
+  font-weight:600;
+  color:#050505;
+  line-height:1.3;
+}
+
+.ep-item-sub{
+  font-size:14px;
+  color:#65676b;
+  margin-top:4px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+.ep-inline-icon{
+  font-size:12px;
+}
+
+.ep-edit-btn{
+  border:none;
+  background:none;
+  cursor:pointer;
+  font-size:20px;
+  color:#65676b;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:38px;
+  height:38px;
+  border-radius:50%;
+}
+
+.ep-edit-btn:hover{
+  background:#f0f2f5;
+}
+
+/* =========================================
+   HELPERS
+========================================= */
+
+.ep-bold{
+  font-weight:700;
+}
+
+.ep-muted-text{
+  color:#65676b;
+}
+
+.ep-link-text{
+  color:#1877f2;
+  word-break:break-word;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+  .ep-header {
+    padding: 10px 14px;
+  }
+
+  .ep-back-btn,
+  .ep-header-space {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ep-back-btn svg {
+    font-size: 24px;
+  }
+
+  .ep-header h2 {
+    font-size: 22px;
+  }
+}
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media (min-width:1024px){
+
+  .ep-container{
+    max-width:850px;
+    margin:25px auto;
+    border-radius:15px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+  }
+
+  .ep-header{
+    padding:18px 25px;
+  }
+
+  .ep-header h2{
+    font-size:28px;
+  }
+
+  .ep-cover-section{
+    margin:25px 25px 110px;
+  }
+
+  .ep-cover-img{
+    height:350px;
+    border-radius:25px;
+  }
+
+  .ep-avatar-wrapper{
+    width:190px;
+    height:190px;
+    bottom:-90px;
+    left:30px;
+  }
+
+  .ep-avatar-img{
+    width:190px;
+    height:190px;
+  }
+
+  .ep-cover-cam{
+    width:62px;
+    height:62px;
+    font-size:24px;
+  }
+
+  .ep-avatar-cam{
+    width:55px;
+    height:55px;
+    font-size:22px;
+  }
+
+  .ep-section-header{
+    padding:20px 30px 12px;
+  }
+
+  .ep-section-body{
+    padding:0 30px;
+  }
+
+  .ep-section-header h3{
+    font-size:24px;
+  }
+
+  .ep-item-main{
+    font-size:20px;
+  }
+
+  .ep-item-sub{
+    font-size:15px;
+  }
+}
+
+.bottom-sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 999;
+}
+
+.bottom-sheet {
+    width: 100%;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    animation: slideUp 0.3s ease;
+}
+
+.option {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

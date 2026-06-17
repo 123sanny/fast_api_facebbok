@@ -1,0 +1,71 @@
+/* Full Screen Page (for Public Audience) */
+.privacy-full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.audience-icon-circle {
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ⬇️ THIS IS THE IMAGE-LIKE BACKGROUND OVERLAY ⬇️ */
+.bottom-sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001; 
+    display: flex;
+    align-items: flex-end; 
+}
+
+.bottom-sheet-card {
+    width: 100%;
+    background: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px 20px 25px 20px;
+    animation: slideUp 0.3s ease-out; /* Smooth open animation niche se */
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.2);
+}
+
+.drag-handle {
+    width: 40px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 10px;
+    margin: 0 auto 15px auto;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.ai-info p {
+    max-width: 85%;
+    line-height: 1.4;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #0866ff; /* FB/Meta Blue */
+}

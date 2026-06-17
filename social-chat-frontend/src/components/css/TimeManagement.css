@@ -1,0 +1,258 @@
+.tm-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #fff;
+  min-height: 100vh;
+  color: #1c1e21;
+}
+
+/* Header */
+.tm-header {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.tm-back {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.tm-divider {
+  height: 1px;
+  background: #e4e6ea;
+}
+
+/* Content */
+.tm-content {
+  padding: 20px 16px;
+}
+
+.tm-content h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+}
+
+/* Slide */
+.tm-slide {
+  margin-bottom: 30px;
+}
+
+.tm-slide h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.tm-desc {
+  color: #65676b;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.tm-link {
+  color: #1877f2;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Stat */
+.tm-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.tm-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.tm-time {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tm-time-label {
+  color: #65676b;
+  font-size: 0.9rem;
+}
+
+/* Bar Chart */
+.tm-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0 4px;
+  margin-bottom: 12px;
+}
+
+.tm-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.tm-bar {
+  width: 36px;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.3s ease;
+}
+
+.tm-day {
+  font-size: 0.78rem;
+  color: #65676b;
+}
+
+/* Dots indicator */
+.tm-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tm-dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tm-dot-indicator.active {
+  background: #1c1e21;
+}
+
+/* Manage section */
+.tm-manage h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.tm-manage-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.tm-manage-item strong {
+  font-size: 1rem;
+  display: block;
+}
+
+.tm-manage-item p {
+  color: #65676b;
+  font-size: 0.9rem;
+  margin: 3px 0 0 0;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .tm-container {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    min-height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .tm-container {
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .tm-bar {
+    width: 28px;
+  }
+}
+/* Desktop */
+@media (min-width: 768px) {
+  .tm-container {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    min-height: auto;
+  }
+
+  .tm-header {
+    padding: 18px 24px;
+  }
+
+  .tm-content {
+    padding: 24px 28px;
+  }
+
+  .tm-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .tm-slide h3 {
+    font-size: 1.2rem;
+  }
+
+  .tm-bar {
+    width: 48px;
+  }
+
+  .tm-chart {
+    height: 130px;
+  }
+
+  .tm-manage-item strong {
+    font-size: 1.05rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .tm-container {
+    max-width: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .tm-header {
+    padding: 12px 14px;
+  }
+
+  .tm-content {
+    padding: 16px 14px;
+  }
+
+  .tm-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .tm-bar {
+    width: 26px;
+  }
+
+  .tm-chart {
+    height: 90px;
+  }
+
+  .tm-time {
+    font-size: 1rem;
+  }
+
+  .tm-time-label {
+    font-size: 0.82rem;
+  }
+}

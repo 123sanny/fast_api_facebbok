@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MenuIcons from "./MenuIcons";
-import "./Notifications.css";
+import "./css/Notifications.css";
 
 function Notifications() {
   const [searchTerm, setSearchTerm] = useState("");

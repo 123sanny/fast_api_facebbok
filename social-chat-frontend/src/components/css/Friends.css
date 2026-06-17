@@ -1,0 +1,285 @@
+.fr-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #fff;
+  min-height: 100vh;
+  color: #1c1e21;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header */
+.fr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px 8px;
+}
+
+.fr-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fr-menu-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #1c1e21;
+}
+
+.fr-header h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.fr-search-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Tabs */
+.fr-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px 15px;
+  overflow-x: auto;
+}
+
+.fr-tabs::-webkit-scrollbar { display: none; }
+
+.fr-tab {
+  border: none;
+  background: #f0f2f5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1c1e21;
+}
+
+.fr-tab.active {
+  background: #e7f3ff;
+  color: #1877f2;
+  font-weight: 600;
+}
+
+.fr-online-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #31a24c;
+  display: inline-block;
+}
+
+.fr-divider {
+  height: 1px;
+  background: #e4e6ea;
+  margin: 4px 0;
+}
+
+/* Section */
+.fr-section {
+  padding: 10px 15px;
+}
+
+.fr-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.fr-section-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.fr-count {
+  color: #e41e3f;
+  margin-left: 4px;
+}
+
+.fr-see-all {
+  color: #1877f2;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* Card */
+.fr-card {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.fr-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fr-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.fr-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #c0c0c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.fr-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  background: #f0f2f5;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  padding: 1px 5px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Info */
+.fr-info {
+  flex: 1;
+}
+
+.fr-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fr-name-row strong {
+  font-size: 1rem;
+}
+
+.fr-time {
+  font-size: 0.8rem;
+  color: #65676b;
+}
+
+.fr-mutual {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 3px;
+  color: #65676b;
+  font-size: 0.85rem;
+}
+
+.fr-mutual-img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Buttons */
+.fr-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.fr-btn-confirm {
+  flex: 1;
+  background: #1877f2;
+  color: white;
+  border: none;
+  padding: 9px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.fr-btn-confirm:hover {
+  background: #166fe5;
+}
+
+.fr-btn-delete {
+  flex: 1;
+  background: #e4e6eb;
+  color: #1c1e21;
+  border: none;
+  padding: 9px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.fr-btn-delete:hover {
+  background: #d8dadf;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .fr-container {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    min-height: auto;
+  }
+
+  .fr-header {
+    padding: 16px 20px 10px;
+  }
+
+  .fr-section {
+    padding: 10px 20px;
+  }
+
+  .fr-tabs {
+    padding: 8px 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .fr-container {
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .fr-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .fr-avatar-placeholder {
+    width: 70px;
+    height: 70px;
+  }
+
+  .fr-header h2 {
+    font-size: 1.4rem;
+  }
+}

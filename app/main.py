@@ -1,26 +1,33 @@
 from fastapi import FastAPI
-from app.database import engine
-from app import models
-from app.routes import user, friends, chat
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
-models.Base.metadata.create_all(bind=engine)
+from database import engine, Base
+import models
+from routers import auth, profile
+# from routers import 
 
+# from models.profile_photo import ProfilePhoto
+app = FastAPI(title="Social Chat API")
 
-origins = [
-    "http://localhost:3000"
-]
-
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+def create_tables():
+    Base.metadata.create_all(bind=engine)
 
-app.include_router(user.router)
-app.include_router(friends.router)
-app.include_router(chat.router)
+app.include_router(auth.router)
+app.include_router(profile.router)
+
+@app.get("/")
+def root():
+    return {"message": "Social Chat API running!"}

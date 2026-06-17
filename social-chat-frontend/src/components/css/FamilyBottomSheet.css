@@ -1,0 +1,87 @@
+/* FamilyBottomSheet.css */
+
+.fbs-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  animation: fbsFade 0.2s ease;
+}
+
+@keyframes fbsFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fbs-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  z-index: 101;
+  padding: 12px 0 40px;
+  animation: fbsSlide 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes fbsSlide {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.fbs-handle {
+  width: 40px;
+  height: 4px;
+  background: #d0d0d0;
+  border-radius: 2px;
+  margin: 0 auto 14px;
+}
+
+.fbs-title {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: #050505;
+}
+
+.fbs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fbs-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #050505;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.fbs-item:active { background: #f0f2f5; }
+
+.fbs-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e4e6eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #050505;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .fbs-sheet {
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,86 @@
+.create-story-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 10005;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Horizontal Scroll for Music/Text/AI */
+.story-options-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.story-options-scroll::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for clean look */
+}
+
+.story-opt-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    background: #f0f2f5;
+    padding: 20px 10px;
+    border-radius: 12px;
+}
+
+.opt-icon-circle {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+/* Gallery Controls */
+.select-multiple-btn {
+    background: rgba(0,0,0,0.05);
+    border: none;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Gallery Grid (3 columns) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+/* Camera Button */
+.camera-float-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #0866ff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}

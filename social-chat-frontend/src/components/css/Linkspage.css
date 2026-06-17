@@ -1,0 +1,342 @@
+/* ============================================
+   LinksPage.css — Facebook exact match
+   ============================================ */
+
+* { box-sizing: border-box; }
+
+.lp-wrapper {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  animation: lpSlide 0.25s ease;
+  overflow: hidden;
+}
+
+@keyframes lpSlide {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ===== HEADER ===== */
+.lp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #fff;
+  border-bottom: 1px solid #e4e6ea;
+  flex-shrink: 0;
+}
+
+.lp-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #050505;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lp-close:active { background: #f0f2f5; }
+
+.lp-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #050505;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.lp-header-space { width: 40px; flex-shrink: 0; }
+
+/* ===== BODY ===== */
+.lp-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px 16px;
+  background: #fff;
+  width: 100%;
+}
+
+/* Add Button */
+.lp-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: #e4e6eb;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #050505;
+  cursor: pointer;
+}
+.lp-add-btn:active { background: #d8dadf; }
+
+/* Add input row */
+.lp-add-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: 1.5px solid #1877f2;
+  border-radius: 10px;
+  background: #fff;
+  width: 100%;
+}
+
+.lp-add-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #050505;
+  background: transparent;
+}
+.lp-add-input::placeholder { color: #bcc0c4; }
+
+.lp-add-confirm {
+  background: #ccc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: not-allowed;
+  flex-shrink: 0;
+}
+.lp-add-confirm.active {
+  background: #1877f2;
+  cursor: pointer;
+}
+
+/* Divider */
+.lp-divider {
+  height: 1px;
+  background: #e4e6ea;
+  margin: 14px 0 0;
+}
+
+/* ===== LINKS LIST ===== */
+.lp-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lp-link-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f2f5;
+  width: 100%;
+  min-width: 0;
+}
+.lp-link-row:last-child { border-bottom: none; }
+
+.lp-link-icon {
+  color: #050505;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.lp-link-text {
+  flex: 1;
+  min-width: 0;          /* ← zaruri hai flex child ke liye */
+  font-size: 15px;
+  color: #050505;
+  line-height: 1.5;
+  /* Yeh teen properties milke kaam karti hain */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.lp-edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #65676b;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.lp-edit-btn:active { background: #f0f2f5; }
+
+/* ===== FOOTER ===== */
+.lp-footer {
+  background: #fff;
+  border-top: 1px solid #e4e6ea;
+  padding: 14px 16px 28px;
+  flex-shrink: 0;
+}
+
+.lp-privacy-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 14px;
+  cursor: pointer;
+}
+
+.lp-privacy-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #050505;
+  margin: 0 0 2px;
+}
+
+.lp-privacy-value {
+  font-size: 14px;
+  color: #65676b;
+  margin: 0;
+}
+
+.lp-privacy-arrow { color: #65676b; }
+
+.lp-save-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.lp-save-btn:active { background: #1464d8; }
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .lp-wrapper {
+    max-width: 500px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    border-left: 1px solid #e4e6ea;
+    border-right: 1px solid #e4e6ea;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lp-wrapper {
+    max-width: 580px;
+    top: 60px;
+    bottom: 60px;
+    border-radius: 14px;
+    inset: unset;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    border: 1px solid #e4e6ea;
+  }
+}
+
+.lp-link-text {
+  margin: 0;
+}
+
+/* ===== EDIT BOX (inline) ===== */
+.lp-edit-box {
+  background: #f0f2f5;
+  border-radius: 10px;
+  padding: 14px;
+  margin: 10px 0;
+}
+
+.lp-edit-box-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #65676b;
+  margin: 0 0 8px;
+}
+
+.lp-edit-input {
+  width: 100%;
+  border: 1.5px solid #e4e6ea;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  color: #050505;
+  background: #fff;
+  outline: none;
+  margin-bottom: 10px;
+}
+.lp-edit-input:focus { border-color: #1877f2; }
+
+.lp-edit-box-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lp-edit-box-right {
+  display: flex;
+  gap: 8px;
+}
+
+.lp-cancel-btn {
+  padding: 8px 16px;
+  background: #e4e6eb;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #050505;
+  cursor: pointer;
+}
+.lp-cancel-btn:active { background: #d8dadf; }
+
+.lp-confirm-btn {
+  padding: 8px 16px;
+  background: #ccc;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: not-allowed;
+}
+.lp-confirm-btn.active {
+  background: #1877f2;
+  cursor: pointer;
+}
+.lp-confirm-btn.active:active { background: #1464d8; }
+
+.lp-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: #e41e3f;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.lp-delete-btn:active { background: #fde8ec; }

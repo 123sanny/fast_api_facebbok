@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-import "./MenuIcons.css";
+import "./css/MenuIcons.css";
 
 function MenuIcons() {
 

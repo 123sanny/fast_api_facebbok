@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* SupportPage.css में इसे अपडेट करें */
+.support-container {
+  max-width: 600px; /* या जितना आप चाहते हैं */
+  margin: 0 auto;
+  background: #fff;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}

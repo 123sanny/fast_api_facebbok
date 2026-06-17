@@ -1,0 +1,270 @@
+.support-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  margin: 0 auto;
+  min-height: 100vh;
+  color: #1c1e21;
+}
+
+.support-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.support-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.back-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.search-section {
+  padding: 10px 15px;
+}
+
+.sp-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f0f2f5;
+  border-radius: 20px;
+  padding: 10px 15px;
+}
+
+.search-icon {
+  color: #65676b;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.sp-search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.content-padding {
+  padding: 0 15px;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  margin: 25px 0 12px 0;
+  font-weight: 700;
+}
+
+.sp-subtitle {
+  color: #65676b;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* Meta AI Card */
+.meta-ai-card {
+  border: 1px solid #dddfe2;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.meta-ai-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.meta-ai-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta-ai-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.meta-ai-left strong {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.meta-ai-left p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #65676b;
+}
+
+.meta-ai-dots {
+  color: #65676b;
+  font-size: 1.2rem;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.meta-ai-desc {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.meta-ai-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.meta-ai-btns button {
+  border: 1px solid #dddfe2;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.meta-ai-btns button:hover {
+  background: #f0f2f5;
+}
+
+/* List Items */
+.sp-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.sp-item-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sp-profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sp-icon {
+  font-size: 1.5rem;
+  color: #1c1e21;
+}
+
+.sp-list-item p {
+  margin: 0;
+  color: #65676b;
+  font-size: 0.9rem;
+}
+
+/* Promo Card */
+.sp-promo-card {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 10px;
+  background-color: #f0f2f5;
+  position: relative;
+}
+
+.sp-promo-img {
+  width: 100%;
+  display: block;
+}
+
+.sp-promo-label {
+  padding: 12px 15px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Article List */
+.sp-article-list {
+  margin-top: 5px;
+}
+
+.sp-article-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.sp-article-item span {
+  font-size: 0.95rem;
+  max-width: 85%;
+}
+
+.sp-see-all {
+  color: #1877f2;
+  font-weight: 600;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+/* ===== DESKTOP VIEW ===== */
+@media (min-width: 768px) {
+  .support-container {
+    /* max-width: 600px; */
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-height: auto;
+  }
+
+  .support-header {
+    padding: 20px 25px;
+  }
+
+  .search-section {
+    padding: 10px 25px;
+  }
+
+  .content-padding {
+    padding: 0 25px 25px;
+  }
+
+  .meta-ai-btns {
+    flex-wrap: nowrap;
+  }
+}
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 767px) {
+  .support-container {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .meta-ai-btns {
+    flex-wrap: wrap;
+  }
+
+  .meta-ai-btns button {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .sp-article-item span {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.05rem;
+  }
+}

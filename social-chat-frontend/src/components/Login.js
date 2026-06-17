@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import "./Login.css";
+import "./css/Login.css";
 
 function Login() {
 const navigate = useNavigate();   // 👈 ye line add karo
@@ -13,7 +13,7 @@ const navigate = useNavigate();   // 👈 ye line add karo
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:8000/login", {
+    const response = await fetch("http://localhost:8000/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -26,7 +26,26 @@ const navigate = useNavigate();   // 👈 ye line add karo
 
     const data = await response.json();
     localStorage.setItem("token", data.access_token);
+    // Save tokens
+    localStorage.setItem(
+      "access_token",
+      data.access_token
+    );
 
+    localStorage.setItem(
+      "refresh_token",
+      data.refresh_token
+    );
+
+    localStorage.setItem(
+      "user_id",
+      data.user_id
+    );
+
+    localStorage.setItem(
+      "first_name",
+      data.first_name
+    );
     alert(data.error);
         navigate("/home");
 

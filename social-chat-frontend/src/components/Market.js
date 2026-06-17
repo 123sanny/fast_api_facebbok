@@ -1,6 +1,6 @@
 import React from "react";
 import MenuIcons from "./MenuIcons";
-import "./Marketplace.css";
+import "./css/Marketplace.css";
 
 function Marketplace() {
   const products = [

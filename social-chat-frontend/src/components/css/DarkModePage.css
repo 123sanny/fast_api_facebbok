@@ -1,0 +1,162 @@
+.language-page {
+  height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Header */
+.language-header {
+  height: 70px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid #d8d8d8;
+  flex-shrink: 0;
+}
+
+.back-btn {
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 15px;
+}
+
+.language-header h4 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 400;
+  color: #111;
+}
+
+/* Section Heading */
+.section-title {
+  background: #cfd3d8;
+  color: #111;
+  padding: 20px 15px;
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 1px solid #bfc4c8;
+  border-bottom: 1px solid #bfc4c8;
+  flex-shrink: 0;
+}
+
+/* Toggle Rows */
+.setting-row {
+  background: #fff;
+  min-height: 82px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ececec;
+  font-size: 18px;
+  color: #111;
+  flex-shrink: 0;
+}
+
+/* Language Scroll Area */
+.language-scroll-list {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Language Item */
+.language-item {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  border-bottom: 1px solid #ececec;
+  font-size: 20px;
+  color: #111;
+  background: #fff;
+}
+
+/* Facebook Blue Radio */
+.language-item input[type="radio"] {
+  width: 26px;
+  height: 26px;
+  accent-color: #1877f2;
+  cursor: pointer;
+}
+
+/* Facebook Blue Switch */
+.setting-row input[type="checkbox"] {
+  width: 52px;
+  height: 26px;
+  accent-color: #1877f2;
+  cursor: pointer;
+}
+
+/* Scrollbar */
+.language-scroll-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.language-scroll-list::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 20px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .language-header {
+    height: 65px;
+  }
+
+  .back-btn {
+    font-size: 28px;
+  }
+
+  .language-header h4 {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 17px;
+    padding: 18px 15px;
+  }
+
+  .setting-row {
+    min-height: 74px;
+    font-size: 16px;
+  }
+
+  .language-item {
+    min-height: 72px;
+    font-size: 18px;
+  }
+
+  .language-item input[type="radio"] {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .language-page {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+
+  .language-header h4 {
+    font-size: 30px;
+  }
+
+  .language-item {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,44 @@
+.search-overlay {
+    position: fixed; /* Poori screen cover karne ke liye */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 99999; /* Sabse upar dikhne ke liye */
+    display: flex;
+    flex-direction: column;
+}
+
+.search-nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-bar-inner {
+    background: #f0f2f5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 20px;
+    gap: 10px;
+}
+
+.search-bar-inner input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.search-scroll-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+/* Baki s-head, s-item, s-name etc. ki styles jo aapne pehle likhi hain */

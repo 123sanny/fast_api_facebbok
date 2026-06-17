@@ -1,0 +1,182 @@
+/* ============================================
+   FullScreenCover.css — Facebook Photo Viewer
+   ============================================ */
+
+/* Full screen black wrapper */
+.fsc-wrapper {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  animation: fscFadeIn 0.2s ease;
+}
+
+@keyframes fscFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== TOP BAR ===== */
+.fsc-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #000;
+  flex-shrink: 0;
+  min-height: 52px;
+}
+
+.fsc-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fsc-icon-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.fsc-icon-btn:active {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Location icon — blue tint like Facebook */
+.fsc-location {
+  color: #1877f2;
+}
+
+/* ===== IMAGE AREA ===== */
+.fsc-image-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.fsc-image-area img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ===== BOTTOM PANEL ===== */
+.fsc-bottom {
+  background: #fff;
+  flex-shrink: 0;
+  padding: 12px 14px 8px;
+}
+
+/* Name + Location */
+.fsc-user-info {
+  margin-bottom: 10px;
+}
+
+.fsc-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 2px;
+}
+
+.fsc-location-text {
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 2px;
+}
+
+.fsc-location-text strong {
+  color: #000;
+}
+
+.fsc-date {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+/* Likes + Comments count row */
+.fsc-counts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.fsc-reaction-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fsc-react-like,
+.fsc-react-heart {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.fsc-count-num {
+  font-size: 14px;
+  color: #555;
+  margin-left: 2px;
+}
+
+.fsc-comment-count {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Divider */
+.fsc-divider {
+  height: 1px;
+  background: #e4e6ea;
+  margin: 0 -14px 4px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.fsc-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 0 2px;
+}
+
+.fsc-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  flex: 1;
+  justify-content: center;
+}
+
+.fsc-action-btn:active {
+  background: #f0f2f5;
+}
+
+/* Liked state — blue */
+.fsc-action-btn.liked {
+  color: #1877f2;
+}

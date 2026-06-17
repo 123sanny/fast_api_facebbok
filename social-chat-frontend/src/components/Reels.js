@@ -1,6 +1,6 @@
 import React from "react";
 import MenuIcons from "./MenuIcons";
-import "./Reels.css";
+import "./css/Reels.css";
 
 function Reels() {
   return (

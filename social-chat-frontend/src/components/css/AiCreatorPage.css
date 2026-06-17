@@ -1,0 +1,131 @@
+.acp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.acp-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+}
+
+/* Header */
+.acp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e4e6eb;
+  flex-shrink: 0;
+}
+.acp-header h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0;
+  color: #050505;
+}
+.acp-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #050505;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.acp-close:hover { background: #f0f2f5; }
+.acp-header-space { width: 36px; }
+
+/* Body */
+.acp-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+.acp-question {
+  font-size: 16px;
+  color: #65676b;
+  line-height: 1.4;
+  margin: 0 0 20px;
+}
+.acp-learn-more {
+  color: #1877f2;
+  font-weight: 700;
+  text-decoration: none;
+}
+.acp-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f2f5;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  color: #050505;
+}
+.acp-option input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #1877f2;
+  cursor: pointer;
+}
+
+/* Footer */
+.acp-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #e4e6eb;
+  flex-shrink: 0;
+}
+.acp-save-btn {
+  width: 100%;
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.acp-save-btn:disabled {
+  background: #e4e6eb;
+  color: #bcc0c4;
+  cursor: not-allowed;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .acp-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .acp-card {
+    flex: none;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .acp-header { padding: 16px 20px; }
+  .acp-body { overflow-y: auto; }
+  .acp-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .acp-save-btn { width: auto; padding: 8px 24px; }
+}

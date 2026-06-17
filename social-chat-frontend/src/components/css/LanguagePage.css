@@ -1,0 +1,129 @@
+.language-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+}
+
+/* Header */
+.language-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid #ddd;
+  flex-shrink: 0;
+}
+
+.back-btn {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.language-header h4 {
+  margin-left: 15px;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* Section Title */
+.section-title {
+  background: #d9dde2;
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Keyboard Settings */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Only language list scroll */
+.language-scroll-list {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Language Item */
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 20px;
+  min-height: 65px;
+}
+
+.language-item input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .language-header {
+    height: 56px;
+  }
+
+  .back-btn {
+    font-size: 22px;
+  }
+
+  .language-header h4 {
+    font-size: 22px;
+  }
+
+  .section-title {
+    font-size: 17px;
+    padding: 12px 14px;
+  }
+
+  .setting-row {
+    font-size: 16px;
+    padding: 16px 14px;
+  }
+
+  .language-item {
+    font-size: 17px;
+    min-height: 58px;
+    padding: 16px 14px;
+  }
+
+  .language-item input[type="radio"] {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ===== Large Desktop ===== */
+@media (min-width: 1200px) {
+  .language-page {
+    max-width: 700px;
+    margin: 0 auto;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+  }
+
+  .language-header h4 {
+    font-size: 32px;
+  }
+
+  .language-item {
+    font-size: 22px;
+  }
+}
+

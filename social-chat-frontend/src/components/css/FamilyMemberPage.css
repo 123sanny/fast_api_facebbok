@@ -1,0 +1,198 @@
+/* FamilyMemberPage.css — used by both FamilyMemberPage & PetPage */
+
+.fmp-wrapper {
+  position: fixed;
+  inset: 0;
+  background: #f0f2f5;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  animation: fmpSlide 0.25s ease;
+}
+
+@keyframes fmpSlide {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Header */
+.fmp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e4e6ea;
+}
+
+.fmp-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.fmp-close:active { background: #f0f2f5; }
+
+.fmp-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: #050505;
+}
+
+.fmp-header-space { width: 34px; }
+
+/* Body */
+.fmp-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Field box */
+.fmp-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #e4e6ea;
+  border-radius: 12px;
+  padding: 16px 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.fmp-field:focus-within {
+  border-color: #1877f2;
+}
+
+.fmp-placeholder {
+  font-size: 16px;
+  color: #bcc0c4;
+}
+
+.fmp-field-value {
+  font-size: 16px;
+  color: #050505;
+  font-weight: 500;
+}
+
+.fmp-field-icon {
+  color: #65676b;
+  flex-shrink: 0;
+}
+
+/* Name input */
+.fmp-name-field { cursor: default; }
+
+.fmp-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #050505;
+  background: transparent;
+}
+
+.fmp-input::placeholder { color: #bcc0c4; }
+
+/* Dropdown */
+.fmp-dropdown {
+  background: #fff;
+  border: 1px solid #e4e6ea;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: -8px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.fmp-dropdown-item {
+  padding: 14px 16px;
+  font-size: 16px;
+  color: #050505;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f5;
+  transition: background 0.12s;
+}
+
+.fmp-dropdown-item:last-child { border-bottom: none; }
+.fmp-dropdown-item:active,
+.fmp-dropdown-item.selected {
+  background: #e7f0ff;
+  color: #1877f2;
+  font-weight: 600;
+}
+
+/* Footer */
+.fmp-footer {
+  background: #fff;
+  border-top: 1px solid #e4e6ea;
+  padding: 14px 16px 28px;
+}
+
+.fmp-privacy-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 14px;
+  cursor: pointer;
+}
+
+.fmp-privacy-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #050505;
+  margin: 0 0 2px;
+}
+
+.fmp-privacy-value {
+  font-size: 14px;
+  color: #65676b;
+  margin: 0;
+}
+
+.fmp-privacy-arrow { color: #65676b; }
+
+/* Save button */
+.fmp-save-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #e4e6eb;
+  color: #bcc0c4;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: not-allowed;
+  transition: background 0.2s, color 0.2s;
+}
+
+.fmp-save-btn.active {
+  background: #1877f2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.fmp-save-btn.active:active {
+  background: #1464d8;
+}
+
+@media (min-width: 768px) {
+  .fmp-wrapper {
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 1px solid #e4e6ea;
+    border-right: 1px solid #e4e6ea;
+  }
+}

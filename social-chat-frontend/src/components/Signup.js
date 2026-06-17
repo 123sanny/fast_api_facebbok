@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import Login from "./Login";
 
-import "./Signup.css";
+import "./css/Signup.css";
 
 function Signup() {
   const navigate = useNavigate();   // 👈 ye line add karo
@@ -24,11 +24,11 @@ function Signup() {
     years.push(y);
   }
 
-  const [username, setUsername] = useState("");
+  const [first_name, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [mobile, setMobile] = useState("");
   const [gender, setGender] = useState("");
 
   const [day, setDay] = useState("");
@@ -38,34 +38,35 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const date_of_birth = `${year}-${month}-${day}`;
+    const dob = `${year}-${month}-${day}`;
 
     try {
-      const response = await fetch("http://localhost:8000/signup", {
+      const response = await fetch("http://localhost:8000/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          username,
+          first_name,
           surname,
           email,
           password,
-          phone,
+          mobile,
           gender,
-          date_of_birth
+          dob
         })
       });
+        console.log("Status:", response.status);
 
       const data = await response.json();
       alert(data.message);
 
       // ✅ FORM RESET
-      setUsername("");
+      setFirstname("");
       setSurname("");
       setEmail("");
       setPassword("");
-      setPhone("");
+      setMobile("");
       setGender("");
       setDay("");
       setMonth("");
@@ -92,8 +93,8 @@ function Signup() {
             <input
               type="text"
               placeholder="First name"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={first_name}
+              onChange={(e) => setFirstname(e.target.value)}
               required
             />
 
@@ -134,8 +135,8 @@ function Signup() {
           <input
             type="number"
             placeholder="Mobile number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
             required
           />
 
@@ -164,19 +165,19 @@ function Signup() {
             required
           />
 
-<div className="signup-actions">
-  <button type="submit">Create account</button>
+            <div className="signup-actions">
+            <button type="submit">Create account</button>
 
-  <p>Already have an account?</p>
+            <p>Already have an account?</p>
 
-  <button
-    type="button"
-    onClick={() => navigate("/login")}
-    className="login-btn"
-  >
-    Login
-  </button>
-</div>
+            <button
+                type="button"
+                onClick={() => navigate("/login")}
+                className="login-btn"
+            >
+                Login
+            </button>
+            </div>
 
         </form>
 
