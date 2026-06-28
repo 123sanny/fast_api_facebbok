@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import "./css/Login.css";
 
 function Login() {
-const navigate = useNavigate();   // 👈 ye line add karo
+  const navigate = useNavigate();   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -47,7 +47,7 @@ const navigate = useNavigate();   // 👈 ye line add karo
       data.first_name
     );
     alert(data.error);
-        navigate("/home");
+    navigate("/home");
 
   };
 
@@ -90,14 +90,14 @@ const navigate = useNavigate();   // 👈 ye line add karo
           <p className="forgot">Forgotten password?</p>
 
 
-             <button
-                type="button"
-                onClick={() => navigate("/")}
-                className="login-btn"
-            >
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="login-btn"
+          >
             Create new account
-            </button>
-       
+          </button>
+
 
         </form>
 

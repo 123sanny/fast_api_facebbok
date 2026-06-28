@@ -1,0 +1,29 @@
+.bs-wrapper {
+  padding: 4px 0 8px;
+}
+
+.bs-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.bs-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e4e6eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #050505;
+}
+
+.bs-text {
+  font-size: 15px;
+  color: #65676b;
+  margin: 0;
+  line-height: 1.4;
+}

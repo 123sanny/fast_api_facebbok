@@ -116,18 +116,18 @@ function Header() {
           <span className="icon-wrapper" onClick={() => setShowCreateModal(!showCreateModal)}>
             <BsPlusLg className="header-icon" />
           </span>
-<i className="bi bi-search" onClick={() => setIsSearching(true)}></i>
+          <i className="bi bi-search" onClick={() => setIsSearching(true)}></i>
 
-      {/* SEARCH COMPONENT KO YAHAN RAKHEIN */}
-      <SearchOverlay 
-        isSearching={isSearching}
-        setIsSearching={setIsSearching}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        recentSearches={recentSearches}
-        suggested={suggested}
-      />
-                <span className="icon-wrapper"><BsMessenger className="header-icon" /></span>
+          {/* SEARCH COMPONENT KO YAHAN RAKHEIN */}
+          <SearchOverlay
+            isSearching={isSearching}
+            setIsSearching={setIsSearching}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            recentSearches={recentSearches}
+            suggested={suggested}
+          />
+          <span className="icon-wrapper"><BsMessenger className="header-icon" /></span>
 
           {showCreateModal && (
             <div className="create-popup shadow">
@@ -151,16 +151,16 @@ function Header() {
 
               {showReelPage && <ReelStory onClose={() => setShowReelPage(false)} />}
               {/* <div className="popup-item" onClick={handleReelClick}><BsCameraVideo className="me-2 text-danger" /> Reel</div> */}
-              
+
               <div className="popup-item" onClick={startLiveStream}><BsBroadcastPin className="me-2 text-warning" /> Live</div>
               {/* <div className="popup-item"><BsChatLeftText className="me-2 text-info" /> Note</div> */}
               <div className="popup-item" onClick={() => setIsNoteOpen(true)}>
                 <BsChatLeftText className="me-2 text-primary" />  Note
-            </div>
+              </div>
 
-            {isNoteOpen && <NewNote onClose={() => setIsNoteOpen(false)} />}
-                        </div>
-                      )}
+              {isNoteOpen && <NewNote onClose={() => setIsNoteOpen(false)} />}
+            </div>
+          )}
         </div>
       </div>
 
