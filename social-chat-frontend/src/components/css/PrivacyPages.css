@@ -1,71 +1,112 @@
-/* Full Screen Page (for Public Audience) */
-.privacy-full-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
+/* ==========================================================================
+   Nexoria Privacy Pages - Modern Full-Screen & Bottom Sheets
+   ========================================================================== */
+
+.privacy-full-screen,
+.full-screen-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-surface, #ffffff);
+  color: var(--color-text, #050505);
+  z-index: 2500;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .privacy-header {
-    display: flex;
-    align-items: center;
-    padding: 15px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  background-color: var(--color-surface, #ffffff);
+  border-bottom: 1px solid var(--color-border, #e4e6eb);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.post-back-arrow {
+  color: var(--color-text, #050505);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+
+.post-back-arrow:hover {
+  background: var(--color-bg-hover, #e4e6eb);
+}
+
+.audience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .audience-icon-circle {
-    font-size: 20px;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--color-bg, #f0f2f5);
+  color: var(--color-primary, #1877f2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
 }
 
-/* ⬇️ THIS IS THE IMAGE-LIKE BACKGROUND OVERLAY ⬇️ */
 .bottom-sheet-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10001; 
-    display: flex;
-    align-items: flex-end; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 2600;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .bottom-sheet-card {
-    width: 100%;
-    background: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 10px 20px 25px 20px;
-    animation: slideUp 0.3s ease-out; /* Smooth open animation niche se */
-    box-shadow: 0 -10px 25px rgba(0,0,0,0.2);
-}
-
-.drag-handle {
-    width: 40px;
-    height: 4px;
-    background: #ccc;
-    border-radius: 10px;
-    margin: 0 auto 15px auto;
+  width: 100%;
+  max-width: 540px;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e4e6eb);
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  color: var(--color-text, #050505);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-.ai-info p {
-    max-width: 85%;
-    line-height: 1.4;
+.drag-handle {
+  width: 44px;
+  height: 5px;
+  background-color: var(--color-card-border, #ced0d4);
+  border-radius: 10px;
+  margin: 0 auto 16px;
 }
 
-.form-switch .form-check-input:checked {
-    background-color: #0866ff; /* FB/Meta Blue */
+.ai-info h6 {
+  color: var(--color-text, #050505);
 }

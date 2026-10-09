@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import "./css/Sidebar.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import ReportModal from "./ReportModal";
 import { useTranslation } from "react-i18next";
 
 
 
-import Meta from "./Meta";
+import NexoriaAI from "./NexoriaAI";
+import CreatorVaultModal from "./CreatorVaultModal";
 import { NavLink } from "react-router-dom";
 
 
 import {
     FaPenToSquare,
-    FaThreads,
-    FaInstagram,
     FaRobot,
-    FaFacebookMessenger,
-    FaWhatsapp,
     FaCircleCheck,
     FaPlus,
-    FaMeta,
     FaCalendarDays,
-
+    FaBolt,
+    FaCompass,
+    FaComments
 } from "react-icons/fa6";
 import {
     BsPeopleFill,
@@ -32,15 +29,11 @@ import {
     BsGlobe,
     BsPlayBtn,
     BsShop,
+    BsFlagFill,
     BsRss,
-    BsController,
-    BsFlag,
-    BsHandIndexThumb,
     BsLifePreserver,
-    BsLightningChargeFill,
     BsMegaphone,
     BsPersonCircle,
-    BsTagFill,
     BsExclamationTriangle,
     BsLock,
     BsClock,
@@ -49,17 +42,38 @@ import {
 
     BsMoonStarsFill,
     BsCreditCard,
-    BsTranslate
-
+    BsTranslate,
+    BsGlobe2,
+    BsShieldFillCheck,
+    BsStarFill
 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { getActiveUserId, getActiveUserName, getActiveUserHandle, getUserStorageItem } from "../services/profileApi";
+
 function Sidebar({ open, setOpen }) {
     const { t } = useTranslation();
     const [showMore, setShowMore] = useState(false);
-    const [showMeta, setShowMeta] = useState(false);
+    const [showNexoriaAI, setShowNexoriaAI] = useState(false);
     const [showProfileModal, setShowProfileModal] = useState(false);
     const [showReportModal, setShowReportModal] = useState(false);
+    const [showCreatorVaultModal, setShowCreatorVaultModal] = useState(false);
     const navigate = useNavigate();
+
+    const activeUserId = getActiveUserId();
+    const [sidebarName, setSidebarName] = useState(() => getActiveUserName());
+    const [sidebarHandle, setSidebarHandle] = useState(() => getActiveUserHandle());
+    const [sidebarAvatar, setSidebarAvatar] = useState(() => getUserStorageItem("avatar", `https://i.pravatar.cc/150?u=${activeUserId}`, activeUserId));
+
+    React.useEffect(() => {
+        const handleProfileUpdate = () => {
+            const currentId = getActiveUserId();
+            setSidebarAvatar(getUserStorageItem("avatar", `https://i.pravatar.cc/150?u=${currentId}`, currentId));
+            setSidebarName(getActiveUserName());
+            setSidebarHandle(getActiveUserHandle());
+        };
+        window.addEventListener("profile-updated", handleProfileUpdate);
+        return () => window.removeEventListener("profile-updated", handleProfileUpdate);
+    }, []);
 
     const handleLogout = async () => {
 
@@ -104,12 +118,12 @@ function Sidebar({ open, setOpen }) {
 
                     <div className="profile-top">
                         <img
-                            src="https://i.pravatar.cc/40"
+                            src={sidebarAvatar}
                             alt="profile"
                             className="profile-img"
                         />
 
-                        <span className="profile-name">Sanny Tiwari</span>
+                        <span className="profile-name">{sidebarName}</span>
                         <i className="bi bi-chevron-down arrow ms-auto"></i>
 
                     </div>
@@ -118,7 +132,7 @@ function Sidebar({ open, setOpen }) {
 
                     <div className="create-page">
                         <div className="page-icon"></div>
-                        <span>Create Facebook Page</span>
+                        <span>Create Nexoria Page</span>
                     </div>
 
                 </div>
@@ -138,85 +152,67 @@ function Sidebar({ open, setOpen }) {
 
                     {/* Grid Menu */}
                     <div className="shortcut-grid">
-                        <div className="box">
-                            <BsPeopleFill className="shortcut-icon" style={{ color: '#1877F2' }} />
-                            <p>{t("Friends (233 online)")}</p>
+                        <div className="box" onClick={() => { navigate('/friends'); setOpen(false); }}>
+                            <BsPeopleFill className="shortcut-icon" style={{ color: '#1877f2' }} />
+                            <p>{t("friends")}</p>
                         </div>
 
-                        <div className="box">
-                            <BsBarChartLineFill className="shortcut-icon" style={{ color: '#45BD62' }} />
-                            <p>{t("Professional dashboard")}</p>
+                        <div className="box" onClick={() => { navigate('/profile'); setOpen(false); }}>
+                            <BsBarChartLineFill className="shortcut-icon" style={{ color: '#14B8A6' }} />
+                            <p>Professional dashboard</p>
                         </div>
-                        <div className="box">
-                            <BsClockHistory className="shortcut-icon" style={{ color: '#1877F2' }} />
-                            <p>{t("Edits")}</p>
+                        <div className="box" onClick={() => { navigate('/edit-profile'); setOpen(false); }}>
+                            <BsClockHistory className="shortcut-icon" style={{ color: '#6C5CE7' }} />
+                            <p>Edit Profile</p>
                         </div>
-                        <div className="box">
-                            <BsClockHistory className="shortcut-icon" style={{ color: '#1877F2' }} />
-                            <p>{t("Memories")}</p>
+                        <div className="box" onClick={() => { navigate('/memories'); setOpen(false); }}>
+                            <BsClockHistory className="shortcut-icon" style={{ color: '#6C5CE7' }} />
+                            <p>Memories</p>
                         </div>
-
-
 
                         {/* 👇 Hidden items */}
                         {showMore && (
                             <>
-                                <div className="box">
+                                <div className="box" onClick={() => { navigate('/saved'); setOpen(false); }}>
                                     <BsBookmarkFill className="shortcut-icon" style={{ color: '#C13584' }} />
-                                    <p>Saved</p>
+                                    <p>{t("saved")}</p>
                                 </div>
-                                <div className="box">
-                                    <BsGlobe className="shortcut-icon" style={{ color: '#1877F2' }} />
-                                    <p>Groups</p>
+                                <div className="box" onClick={() => { navigate('/friends'); setOpen(false); }}>
+                                    <BsGlobe className="shortcut-icon" style={{ color: '#1877f2' }} />
+                                    <p>{t("friends")}</p>
                                 </div>
 
-                                <div className="box">
+                                <div className="box" onClick={() => { navigate('/reels'); setOpen(false); }}>
                                     <BsPlayBtn className="shortcut-icon" style={{ color: '#F02849' }} />
-                                    <p>Reels</p>
+                                    <p>{t("reels")}</p>
                                 </div>
 
-                                <div className="box">
-                                    <BsShop className="shortcut-icon" style={{ color: '#1877F2' }} />
-                                    <p>Marketplace</p>
+                                <div className="box" onClick={() => { navigate('/market'); setOpen(false); }}>
+                                    <BsShop className="shortcut-icon" style={{ color: '#00a884' }} />
+                                    <p>{t("marketplace")}</p>
                                 </div>
-                                <div className="box">
-                                    <BsMegaphone className="shortcut-icon" style={{ color: '#1877F2' }} />
-                                    <p>Add Center </p>
-                                </div>
-                                <div className="box">
-                                    <BsPersonCircle className="shortcut-icon" style={{ color: '#9739E3' }} />
-                                    <p>Avatar </p>
-                                </div>
-                                <div className="box">
-                                    <FaCalendarDays className="shortcut-icon" style={{ color: '#F35369' }} />
-                                    <p>Events </p>
-                                </div>
-                                <div className="box">
-                                    <BsRss className="shortcut-icon" style={{ color: '#F7B928' }} />
-                                    <p>Feeds</p>
-                                </div>
-                                <div className="box">
-                                    <BsTagFill className="shortcut-icon" style={{ color: '#000000' }} />
-                                    <p>Finds</p>
-                                </div>
-                                <div className="box">
-                                    <BsController className="shortcut-icon" style={{ color: '#1877F2' }} />
-                                    <p>Games</p>
-                                </div>
-                                <div className="box">
-                                    <BsLightningChargeFill className="shortcut-icon" style={{ color: '#FFD700' }} />
-                                    <p>Nexoria Chat</p>
-                                </div>
-                                <div className="box">
-                                    <BsFlag className="shortcut-icon" style={{ color: '#F56040' }} />
+                                <div className="box" onClick={() => { navigate('/pages'); setOpen(false); }}>
+                                    <BsFlagFill className="shortcut-icon" style={{ color: '#F35369' }} />
                                     <p>Pages</p>
                                 </div>
-                                <div className="box">
-                                    <BsHandIndexThumb className="shortcut-icon" style={{ color: '#1877F2' }} />
-                                    <p>Pokes</p>
+                                <div className="box" onClick={() => { navigate('/events'); setOpen(false); }}>
+                                    <FaCalendarDays className="shortcut-icon" style={{ color: '#F35369' }} />
+                                    <p>Events</p>
                                 </div>
-                                <div className="box">
-                                    <BsLifePreserver className="shortcut-icon" style={{ color: '#45BD62' }} />
+                                <div className="box" onClick={() => { navigate('/feeds'); setOpen(false); }}>
+                                    <BsRss className="shortcut-icon" style={{ color: '#2bb673' }} />
+                                    <p>{t("feeds") || "Feeds"}</p>
+                                </div>
+                                <div className="box" onClick={() => { navigate('/watch'); setOpen(false); }}>
+                                    <BsRss className="shortcut-icon" style={{ color: '#F7B928' }} />
+                                    <p>{t("watch_feed")}</p>
+                                </div>
+                                <div className="box" onClick={() => { setShowCreatorVaultModal(true); setOpen(false); }}>
+                                    <BsStarFill className="shortcut-icon" style={{ color: '#F7B928' }} />
+                                    <p>Creator Vault</p>
+                                </div>
+                                <div className="box" onClick={() => { navigate('/support'); setOpen(false); }}>
+                                    <BsLifePreserver className="shortcut-icon" style={{ color: '#14B8A6' }} />
                                     <p>Support</p>
                                 </div>
                             </>
@@ -260,14 +256,14 @@ function Sidebar({ open, setOpen }) {
                         >
                             <div className="accordion-body">
 
-                                <p onClick={() => setShowMeta(true)} style={{ cursor: "pointer" }}>
+                                <p onClick={() => setShowNexoriaAI(true)} style={{ cursor: "pointer" }}>
                                     <FaRobot className="me-2" style={{ color: '#00D2FF' }} />
-                                    Meta AI support assistant
+                                    Nexoria Quantum AI Assistant
                                 </p>
 
                                 <NavLink to="/support" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <p style={{ cursor: "pointer" }}>
-                                        <i className="bi bi-life-preserver me-2" style={{ color: '#45BD62' }}></i>
+                                        <i className="bi bi-life-preserver me-2" style={{ color: '#14B8A6' }}></i>
                                         Support
                                     </p>
                                 </NavLink>
@@ -284,13 +280,13 @@ function Sidebar({ open, setOpen }) {
 
                                 <NavLink to="/terms_policies" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <p style={{ cursor: "pointer" }}>
-                                        <i className="bi bi-life-preserver me-2" style={{ color: '#45BD62' }}></i>
+                                        <i className="bi bi-life-preserver me-2" style={{ color: '#14B8A6' }}></i>
                                         Terms And Policy
                                     </p>
                                 </NavLink>
 
                                 {/* <p>
-                                    <BsShieldCheck className="me-2" style={{ color: '#1877F2' }} />
+                                    <BsShieldCheck className="me-2" style={{ color: '#6C5CE7' }} />
                                     Terms And Policy
                                 </p> */}
                             </div>
@@ -305,7 +301,7 @@ function Sidebar({ open, setOpen }) {
                                 data-bs-toggle="collapse"
                                 data-bs-target="#settingsCollapse"
                             >
-                                <i class="bi bi-gear me-3 fs-4"></i> <span class="flex-grow-1">Settings and privacy</span>
+                                <i className="bi bi-gear me-3 fs-4"></i> <span className="flex-grow-1">{t("settings")}</span>
                                 <i className="bi bi-chevron-down arrow ms-auto"></i>
 
                             </button>
@@ -319,78 +315,74 @@ function Sidebar({ open, setOpen }) {
                             <div className="accordion-body">
                                 {/* Settings */}
                                 <NavLink to="/settings" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    <p style={{ cursor: "pointer" }}>
-                                        <BsGearFill className="me-2" /> Settings
-                                    </p>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon"><BsGearFill /></div>
+                                        <span>{t("settings")}</span>
+                                    </div>
                                 </NavLink>
 
+                                {/* Security & Anti-Hack Shield */}
+                                <NavLink to="/security" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon text-success"><BsShieldFillCheck /></div>
+                                        <span>{t("security_shield")}</span>
+                                    </div>
+                                </NavLink>
 
                                 {/* Privacy Checkup */}
                                 <NavLink to="/privacy" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <div className="sp2-item">
                                         <div className="sp2-item-icon"><BsLock /></div>
-                                        <span>Privacy Checkup</span>
+                                        <span>{t("privacy_checkup")}</span>
                                     </div>
                                 </NavLink>
 
                                 <NavLink to="/time-management" style={{ textDecoration: 'none', color: 'inherit' }}>
                                     <div className="sp2-item">
                                         <div className="sp2-item-icon"><BsClock /></div>
-                                        <span>Time management</span>
+                                        <span>{t("time_management")}</span>
                                     </div>
                                 </NavLink>
+
                                 {/* Device Request */}
-                                <p>
-                                    <NavLink to="/device-login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <div className="sp2-item">
-                                            <div className="sp2-item-icon"><BsPhone /></div>
-                                            <span>Device Request</span>
-                                        </div>
-                                    </NavLink>
-                                </p>
+                                <NavLink to="/device-login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon"><BsPhone /></div>
+                                        <span>{t("device_request")}</span>
+                                    </div>
+                                </NavLink>
 
                                 {/* Recent ad activity */}
-                                <p>
-                                    <NavLink to="/ad-activity" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <div className="sp2-item">
-                                            <div className="sp2-item-icon"><BsMegaphone /></div>
-                                            <span>Recent ad activity</span>
-                                        </div>
-                                    </NavLink>
-                                </p>
+                                <NavLink to="/ad-activity" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon"><BsMegaphone /></div>
+                                        <span>{t("recent_ad_activity")}</span>
+                                    </div>
+                                </NavLink>
 
                                 {/* Link history */}
-                                <p>
-                                    <NavLink to="/orders-payments" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <div className="sp2-item">
-                                            <div className="sp2-item-icon"><BsCreditCard /></div>
-                                            <span>Order and Payments</span>
-                                        </div>
-                                    </NavLink>
-                                </p>
+                                <NavLink to="/orders-payments" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon"><BsCreditCard /></div>
+                                        <span>{t("orders_payments")}</span>
+                                    </div>
+                                </NavLink>
 
                                 {/* Dark Mode */}
-                                <p>
-                                    <NavLink to="/darkmodepage" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <div className="sp2-item">
-                                            <div className="sp2-item-icon"><BsMoonStarsFill /></div>
-                                            <span>Dark Mode</span>
-                                        </div>
-                                    </NavLink>
-                                    {/* <BsMoonStarsFill className="me-2" /> Dark Mode */}
-                                </p>
-
+                                <NavLink to="/darkmodepage" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon"><BsMoonStarsFill /></div>
+                                        <span>{t("dark_mode")}</span>
+                                    </div>
+                                </NavLink>
 
                                 {/* Language */}
-                                <p>
-                                    <NavLink to="/languagepage" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <div className="sp2-item">
-                                            <div className="sp2-item-icon"><BsTranslate /></div>
-                                            <span>Language</span>
-                                        </div>
-                                    </NavLink>
-
-                                </p>
+                                <NavLink to="/languagepage" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <div className="sp2-item">
+                                        <div className="sp2-item-icon"><BsTranslate /></div>
+                                        <span>{t("language")}</span>
+                                    </div>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
@@ -403,7 +395,7 @@ function Sidebar({ open, setOpen }) {
                                 data-bs-toggle="collapse"
                                 data-bs-target="#proCollapse"
                             >
-                                <i class="bi bi-grid-1x2 me-3 fs-4"></i> <span class="flex-grow-1">Professional access</span>
+                                <i className="bi bi-grid-1x2 me-3 fs-4"></i> <span className="flex-grow-1">Professional access</span>
                                 <i className="bi bi-chevron-down arrow ms-auto"></i>
 
                             </button>
@@ -416,9 +408,9 @@ function Sidebar({ open, setOpen }) {
                         >
                             <div className="accordion-body">
                                 <div className="verified-card">
-                                    <img src="https://img.freepik.com/free-vector/blue-check-mark-badge_78370-699.jpg" alt="Meta Verified badge" />
+                                    <img src="https://img.freepik.com/free-vector/blue-check-mark-badge_78370-699.jpg" alt="Nexoria Verified badge" />
                                     <div>
-                                        <h4>Meta Verified</h4>
+                                        <h4>Nexoria Verified</h4>
                                         <p>Build trust with a verified badge.</p>
                                     </div>
                                 </div>
@@ -426,7 +418,7 @@ function Sidebar({ open, setOpen }) {
                         </div>
                     </div>
 
-                    {/* Also from Meta */}
+                    {/* More from Nexoria */}
                     <div className="accordion-item">
                         <h2 className="accordion-header">
                             <button
@@ -434,7 +426,7 @@ function Sidebar({ open, setOpen }) {
                                 data-bs-toggle="collapse"
                                 data-bs-target="#metaCollapse"
                             >
-                                <i class="bi bi-grid-3x3-gap me-3 fs-4"></i> <span class="flex-grow-1">Also from Meta</span>
+                                <i className="bi bi-grid-3x3-gap me-3 fs-4"></i> <span className="flex-grow-1">More from Nexoria</span>
                                 <i className="bi bi-chevron-down arrow ms-auto"></i>
 
                             </button>
@@ -446,12 +438,20 @@ function Sidebar({ open, setOpen }) {
                             data-bs-parent="#mainAccordion"
                         >
                             <div className="accordion-body">
-                                <p><FaPenToSquare className="me-2" /> Edits</p>
-                                <p><FaThreads className="me-2" /> Threads</p>
-                                <p><FaInstagram className="me-2" /> Instagram</p>
-                                <p><FaRobot className="me-2" /> Chat with AIs</p>
-                                <p><FaFacebookMessenger className="me-2" /> Messenger</p>
-                                <p><FaWhatsapp className="me-2" /> WhatsApp</p>
+                                <p onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent("open-pulse-lounge")); }} style={{ cursor: "pointer" }}>
+                                    <span className="me-2">🎙️</span> <strong>Pulse Lounge</strong> (3D Audio)
+                                </p>
+                                <p onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent("open-creator-vault")); }} style={{ cursor: "pointer" }}>
+                                    <span className="me-2">⭐</span> <strong>Star Vault</strong> (Creator Tips)
+                                </p>
+                                <p onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent("open-zen-player")); }} style={{ cursor: "pointer" }}>
+                                    <span className="me-2">🎧</span> <strong>Zen Audio Sanctuary</strong>
+                                </p>
+                                <p><FaPenToSquare className="me-2" /> Nexoria Creator Studio</p>
+                                <p><FaBolt className="me-2 text-warning" /> Nexoria Pulse (Micro-posts)</p>
+                                <p><FaCompass className="me-2 text-danger" /> Nexoria Lens (Visual Hub)</p>
+                                <p onClick={() => setShowNexoriaAI(true)} style={{ cursor: "pointer" }}><FaRobot className="me-2 text-info" /> Nexoria Quantum AI</p>
+                                <p><FaComments className="me-2 text-primary" /> Nexoria Connect (E2EE Chat)</p>
                             </div>
                         </div>
                     </div>
@@ -459,7 +459,7 @@ function Sidebar({ open, setOpen }) {
                 </div>
 
                 {/* Logout */}
-                <button className="see-more" onClick={handleLogout}>Logout</button>
+                <button className="see-more" onClick={handleLogout}>{t("logout")}</button>
 
 
                 {showProfileModal && (
@@ -469,42 +469,45 @@ function Sidebar({ open, setOpen }) {
 
                             {/* Current Profile */}
                             <div className="modal-profile-item active-profile">
-                                <img src="https://i.pravatar.cc/40" alt="user" />
-                                <span className="flex-grow-1">Sanny Tiwari</span>
+                                <img src={sidebarAvatar} alt="user" />
+                                <span className="flex-grow-1">{sidebarName}</span>
                                 <FaCircleCheck className="text-primary" />
                             </div>
 
                             <div className="modal-profile-item">
                                 <div className="modal-icon-circle"><FaPlus /></div>
-                                <span>Create Facebook Page</span>
+                                <span>Create Nexoria Page</span>
                             </div>
 
-                            <p className="modal-label">Your Instagram profile</p>
+                            <p className="modal-label">Your Nexoria Lens profile</p>
 
-                            {/* Instagram Account */}
+                            {/* Connected Lens Account */}
                             <div className="modal-profile-item ig-item">
                                 <div className="ig-avatar-container">
-                                    <img src="https://i.pravatar.cc/40" alt="ig" />
-                                    <FaInstagram className="ig-mini-badge" />
+                                    <img src={sidebarAvatar} alt="ig" />
+                                    <FaCompass className="ig-mini-badge text-warning" />
                                 </div>
                                 <div className="flex-grow-1">
-                                    <div className="ig-name">sanny.tiwari.355</div>
-                                    <div className="ig-notif text-danger">● 2 notifications</div>
+                                    <div className="ig-name">{sidebarHandle}</div>
+                                    <div className="ig-notif text-success">● Synced with Nexoria</div>
                                 </div>
                                 <span className="text-muted">•••</span>
                             </div>
 
-                            <button className="btn-accounts">Go to Accounts Centre</button>
+                            <button className="btn-accounts" onClick={() => navigate("/settings")}>Go to Nexoria Identity Centre</button>
 
                             <div className="meta-footer">
-                                <FaMeta className="meta-icon" /> <span>Meta</span>
+                                <BsGlobe2 className="meta-icon" /> <span>Nexoria Ecosystem</span>
                             </div>
                         </div>
                     </div>
                 )}
             </div>
-            {showMeta && (
-                <Meta onClose={() => setShowMeta(false)} />
+            {showNexoriaAI && (
+                <NexoriaAI onClose={() => setShowNexoriaAI(false)} />
+            )}
+            {showCreatorVaultModal && (
+                <CreatorVaultModal onClose={() => setShowCreatorVaultModal(false)} />
             )}
         </>
     );

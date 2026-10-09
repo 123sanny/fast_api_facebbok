@@ -1,61 +1,949 @@
-.signup-page {
+/* ==========================================================================
+   NEXORIA MESMERIZING REGISTRATION EXPERIENCE
+   Ultra-Modern Aurora Glassmorphism, Perfect Scrolling & Responsive Grid
+   ========================================================================== */
+
+:root {
+  --nx-bg-dark: #070b14;
+  --nx-card-bg: rgba(15, 23, 42, 0.78);
+  --nx-card-border: rgba(255, 255, 255, 0.1);
+  --nx-primary: #1877f2;
+  --nx-primary-glow: rgba(24, 119, 242, 0.4);
+  --nx-success: #10b981;
+  --nx-success-glow: rgba(16, 185, 129, 0.35);
+  --nx-text-main: #f8fafc;
+  --nx-text-muted: #94a3b8;
+  --nx-text-dim: #64748b;
+  --nx-input-bg: rgba(30, 41, 59, 0.6);
+  --nx-input-border: rgba(255, 255, 255, 0.12);
+}
+
+/* Base Wrapper with Butter-Smooth Natural Scrolling */
+.nx-signup-wrapper {
+  position: relative;
   min-height: 100vh;
-  background: #f0f2f5;
+  width: 100%;
+  background: var(--nx-bg-dark);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;   /* center ki jagah flex-start */
-  padding-top: 40px;
-  padding-bottom: 40px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--nx-text-main);
+  padding: 40px 16px;
+  box-sizing: border-box;
 }
 
-.signup-box {
-  width: 400px;
-  background: white;
-  padding: 30px;
+/* Fixed Background Aurora Layer - Zero Overflow / Zero Scroll Contamination */
+.nx-bg-aurora-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Background Glowing Aurora Orbs */
+.nx-signup-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: floatOrb 20s ease-in-out infinite alternate;
+}
+
+.nx-sorb-1 {
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, #10b981 0%, #00d2ff 60%, transparent 100%);
+}
+
+.nx-sorb-2 {
+  width: 550px;
+  height: 550px;
+  bottom: -120px;
+  left: -120px;
+  background: radial-gradient(circle, #8b5cf6 0%, #1877f2 60%, transparent 100%);
+  animation-duration: 24s;
+  animation-delay: -6s;
+}
+
+.nx-sorb-3 {
+  width: 420px;
+  height: 420px;
+  top: 35%;
+  right: 40%;
+  background: radial-gradient(circle, #ec4899 0%, #eab308 70%, transparent 100%);
+  opacity: 0.2;
+  animation-duration: 16s;
+}
+
+/* Sci-Fi Grid Overlay */
+.nx-signup-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main Container Layout */
+.nx-signup-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1220px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+  margin: auto;
+}
+
+/* ==========================================================================
+   LEFT: HERO BRAND & VALUE PROPOSITION
+   ========================================================================== */
+
+.nx-signup-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 16px;
+}
+
+.nx-bonus-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #facc15;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+
+.nx-signup-title {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.nx-signup-gradient {
+  background: linear-gradient(135deg, #10b981 0%, #00d2ff 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.nx-signup-subtitle {
+  font-size: 15px;
+  color: var(--nx-text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* 4 Benefits Items */
+.nx-signup-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.nx-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(30, 41, 59, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.nx-benefit-item:hover {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateX(4px);
+}
+
+.nx-benefit-icon {
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
 }
 
-.signup-box h2 {
-  margin-bottom: 5px;
-}
-
-.signup-box p {
-  color: gray;
+.nx-benefit-text h4 {
   font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: #f1f5f9;
+}
+
+.nx-benefit-text p {
+  font-size: 12px;
+  color: var(--nx-text-dim);
+  margin: 0;
+}
+
+/* Social Proof Card */
+.nx-social-proof-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  backdrop-filter: blur(16px);
+  margin-top: 6px;
+  width: fit-content;
+}
+
+.nx-proof-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.nx-proof-avatars img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #0f172a;
+  margin-left: -10px;
+  object-fit: cover;
+}
+
+.nx-proof-avatars img:first-child {
+  margin-left: 0;
+}
+
+.nx-proof-count {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #00d2ff);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0f172a;
+  margin-left: -10px;
+}
+
+.nx-proof-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nx-proof-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #facc15;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.nx-proof-rating span {
+  color: #ffffff;
+  margin-left: 4px;
+}
+
+.nx-proof-info p {
+  font-size: 12px;
+  color: var(--nx-text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+
+/* ==========================================================================
+   RIGHT: GLASSMORPHIC REGISTRATION CARD
+   ========================================================================== */
+
+.nx-signup-card-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.nx-signup-card {
+  width: 100%;
+  max-width: 490px;
+  background: var(--nx-card-bg);
+  border: 1px solid var(--nx-card-border);
+  border-radius: 24px;
+  padding: 30px 28px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  animation: cardFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nx-signup-header {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.signup-box input,
-.signup-box select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.nx-signup-brand-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #10b981 0%, #00d2ff 100%);
+  color: #ffffff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
 }
 
-.name-row {
+.nx-signup-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.nx-signup-header p {
+  font-size: 13px;
+  color: var(--nx-text-muted);
+  margin: 0;
+}
+
+/* Form Styles */
+.nx-signup-form {
   display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nx-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.name-row input {
-  width: 50%;
+.nx-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-button {
+.nx-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nx-input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.nx-pwd-strength-label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nx-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--nx-input-bg);
+  border: 1px solid var(--nx-input-border);
+  border-radius: 11px;
+  transition: all 0.25s ease;
+}
+
+.nx-input-box:focus-within {
+  border-color: #38bdf8;
+  background: rgba(30, 41, 59, 0.85);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.nx-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--nx-text-dim);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.nx-input-box input {
   width: 100%;
-  padding: 12px;
-  background: #1877f2;
-  color: white;
+  background: transparent;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  outline: none;
+  padding: 11px 36px 11px 36px;
+  font-size: 13.5px;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.nx-input-box input::placeholder {
+  color: var(--nx-text-dim);
+}
+
+.nx-toggle-pwd {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--nx-text-dim);
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.nx-toggle-pwd:hover {
+  color: #ffffff;
+}
+
+/* Password Strength Bar */
+.nx-strength-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.nx-strength-bar-fill {
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 999px;
+}
+
+/* Date of Birth Grid */
+.nx-dob-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 8px;
+}
+
+.nx-select-wrap {
+  position: relative;
+  background: var(--nx-input-bg);
+  border: 1px solid var(--nx-input-border);
+  border-radius: 11px;
+}
+
+.nx-select-wrap select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 10px;
+  font-size: 13px;
+  color: #ffffff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.nx-select-wrap select option {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+/* Gender Radio Chips */
+.nx-gender-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.nx-gender-chip {
+  padding: 9px 8px;
+  border-radius: 11px;
+  border: 1px solid var(--nx-input-border);
+  background: var(--nx-input-bg);
+  color: var(--nx-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.nx-gender-chip.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: #10b981;
+  color: #34d399;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
+.nx-gender-chip:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* Checkboxes Group */
+.nx-checkboxes-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.nx-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--nx-text-muted);
+  cursor: pointer;
+  line-height: 1.4;
+  user-select: none;
+}
+
+.nx-check-item input {
+  display: none;
+}
+
+.nx-custom-check {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1px solid var(--nx-input-border);
+  background: var(--nx-input-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.2s ease;
+}
+
+.nx-check-item input:checked + .nx-custom-check {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.nx-check-item input:checked + .nx-custom-check::after {
+  content: "✔";
+  font-size: 9px;
+  color: #ffffff;
+}
+
+.nx-check-item a {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+/* Primary Action Button */
+.nx-signup-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 2px;
+}
+
+.nx-signup-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.55);
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.nx-signup-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Fast Instant Demo Button */
+.nx-signup-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 14px 0 10px 0;
+}
+
+.nx-signup-divider::before,
+.nx-signup-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nx-signup-divider span {
+  padding: 0 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--nx-text-dim);
+}
+
+.nx-demo-fast-btn {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 11px;
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  color: #fde047;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.nx-demo-fast-btn:hover {
+  background: rgba(234, 179, 8, 0.18);
+  border-color: #fde047;
+  transform: translateY(-1px);
+}
+
+/* Social Grid */
+.nx-social-signup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.nx-social-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nx-social-item:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Card Footer */
+.nx-signup-footer {
+  text-align: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nx-signup-footer p {
+  font-size: 12px;
+  color: var(--nx-text-dim);
+  margin: 0 0 8px 0;
+}
+
+.nx-login-link-btn {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 11px;
+  background: rgba(24, 119, 242, 0.12);
+  border: 1px solid rgba(24, 119, 242, 0.35);
+  color: #60a5fa;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.nx-login-link-btn:hover {
+  background: rgba(24, 119, 242, 0.22);
+  border-color: #60a5fa;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Bottom Bar */
+.nx-signup-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 490px;
+  margin-top: 14px;
+  padding: 0 6px;
+  font-size: 11.5px;
+  color: var(--nx-text-dim);
+}
+
+.nx-lang-box select {
+  background: transparent;
+  border: none;
+  color: var(--nx-text-muted);
+  font-size: 11.5px;
+  outline: none;
   cursor: pointer;
 }
 
-button:hover {
-  background: #166fe5;
+.nx-lang-box select option {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.nx-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+  .nx-signup-wrapper {
+    padding: 30px 14px;
+  }
+
+  .nx-signup-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 540px;
+  }
+
+  .nx-signup-hero {
+    text-align: center;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .nx-signup-subtitle {
+    margin: 0 auto;
+  }
+
+  .nx-signup-benefits {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .nx-social-proof-card {
+    margin: 0 auto;
+  }
+}
+
+/* Mobile Devices (max-width: 600px) */
+@media (max-width: 600px) {
+  .nx-signup-wrapper {
+    padding: 20px 10px;
+    justify-content: flex-start;
+  }
+
+  .nx-signup-title {
+    font-size: 28px;
+  }
+
+  .nx-signup-card {
+    padding: 22px 16px;
+    border-radius: 20px;
+  }
+
+  .nx-form-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .nx-signup-bottom-bar {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   GOOGLE IDENTITY ACCOUNT CHOOSER MODAL (SIGNUP)
+   ========================================================================== */
+.nx-g-modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: gFadeIn 0.2s ease-out;
+}
+
+.nx-g-modal-card {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.4);
+  color: #1e293b;
+  position: relative;
+  animation: gScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes gFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gScaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.nx-g-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.nx-g-close {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.nx-g-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.nx-g-accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nx-g-account-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nx-g-account-item:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.nx-g-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #cbd5e1;
+}
+
+.nx-g-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-size: 18px;
+}
+
+.nx-g-acc-info strong {
+  display: block;
+  font-size: 14px;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.nx-g-acc-info p {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.nx-g-account-item.use-another {
+  border-style: dashed;
 }

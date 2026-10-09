@@ -1,13 +1,12 @@
-/* ============================================
-   FullScreenCover.css — Facebook Photo Viewer
-   ============================================ */
+/* =========================================================
+   FullScreenCover.css — Photo Viewer
+========================================================= */
 
-/* Full screen black wrapper */
 .fsc-wrapper {
   position: fixed;
   inset: 0;
-  background: #000;
-  z-index: 200;
+  background: #000000;
+  z-index: 2400;
   display: flex;
   flex-direction: column;
   animation: fscFadeIn 0.2s ease;
@@ -18,13 +17,13 @@
   to   { opacity: 1; }
 }
 
-/* ===== TOP BAR ===== */
 .fsc-topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 14px;
-  background: #000;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
   flex-shrink: 0;
   min-height: 52px;
 }
@@ -32,7 +31,7 @@
 .fsc-topbar-right {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .fsc-icon-btn {
@@ -49,23 +48,21 @@
   transition: background 0.15s;
 }
 
-.fsc-icon-btn:active {
-  background: rgba(255,255,255,0.12);
+.fsc-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* Location icon — blue tint like Facebook */
 .fsc-location {
-  color: #1877f2;
+  color: var(--color-primary, #1877f2);
 }
 
-/* ===== IMAGE AREA ===== */
 .fsc-image-area {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #000;
+  background: #000000;
 }
 
 .fsc-image-area img {
@@ -74,14 +71,21 @@
   object-fit: contain;
 }
 
-/* ===== BOTTOM PANEL ===== */
 .fsc-bottom {
-  background: #fff;
+  background: var(--color-surface, #ffffff);
   flex-shrink: 0;
-  padding: 12px 14px 8px;
+  padding: 14px 18px 12px;
+  border-top: 1px solid var(--color-border, #e4e6ea);
+  color: var(--color-text, #050505);
 }
 
-/* Name + Location */
+body[data-theme="dark"] .fsc-bottom,
+[data-theme="dark"] .fsc-bottom {
+  background: var(--color-surface, #242526);
+  border-top-color: var(--color-border, #393a3b);
+  color: var(--color-text, #e4e6eb);
+}
+
 .fsc-user-info {
   margin-bottom: 10px;
 }
@@ -89,28 +93,26 @@
 .fsc-name {
   font-size: 15px;
   font-weight: 700;
-  color: #000;
   margin: 0 0 2px;
 }
 
 .fsc-location-text {
-  font-size: 14px;
-  color: #333;
+  font-size: 13.5px;
+  color: var(--color-text-secondary, #65676b);
   margin: 0 0 2px;
 }
 
-.fsc-location-text strong {
-  color: #000;
+body[data-theme="dark"] .fsc-location-text,
+[data-theme="dark"] .fsc-location-text {
+  color: var(--color-text-secondary, #b0b3b8);
 }
 
 .fsc-date {
   font-size: 12px;
-  color: #777;
+  color: var(--color-text-secondary, #777);
   margin: 0;
-  letter-spacing: 0.3px;
 }
 
-/* Likes + Comments count row */
 .fsc-counts {
   display: flex;
   justify-content: space-between;
@@ -124,31 +126,28 @@
   gap: 4px;
 }
 
-.fsc-react-like,
-.fsc-react-heart {
-  font-size: 18px;
-  line-height: 1;
-}
-
-.fsc-count-num {
-  font-size: 14px;
-  color: #555;
-  margin-left: 2px;
-}
-
+.fsc-count-num,
 .fsc-comment-count {
-  font-size: 14px;
-  color: #555;
+  font-size: 13px;
+  color: var(--color-text-secondary, #65676b);
 }
 
-/* Divider */
+body[data-theme="dark"] .fsc-count-num,
+body[data-theme="dark"] .fsc-comment-count {
+  color: var(--color-text-secondary, #b0b3b8);
+}
+
 .fsc-divider {
   height: 1px;
-  background: #e4e6ea;
-  margin: 0 -14px 4px;
+  background: var(--color-border, #e4e6ea);
+  margin: 0 -18px 6px;
 }
 
-/* ===== ACTION BUTTONS ===== */
+body[data-theme="dark"] .fsc-divider,
+[data-theme="dark"] .fsc-divider {
+  background: var(--color-border, #393a3b);
+}
+
 .fsc-actions {
   display: flex;
   justify-content: space-around;
@@ -161,8 +160,8 @@
   gap: 6px;
   background: none;
   border: none;
-  color: #555;
-  font-size: 15px;
+  color: var(--color-text-secondary, #65676b);
+  font-size: 14.5px;
   font-weight: 600;
   cursor: pointer;
   padding: 8px 12px;
@@ -172,11 +171,20 @@
   justify-content: center;
 }
 
-.fsc-action-btn:active {
-  background: #f0f2f5;
+body[data-theme="dark"] .fsc-action-btn,
+[data-theme="dark"] .fsc-action-btn {
+  color: var(--color-text-secondary, #b0b3b8);
 }
 
-/* Liked state — blue */
+.fsc-action-btn:hover {
+  background: var(--color-bg-hover, #f0f2f5);
+}
+
+body[data-theme="dark"] .fsc-action-btn:hover,
+[data-theme="dark"] .fsc-action-btn:hover {
+  background: var(--color-bg-hover, #3a3b3c);
+}
+
 .fsc-action-btn.liked {
-  color: #1877f2;
+  color: var(--color-primary, #1877f2);
 }

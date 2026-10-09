@@ -8,16 +8,16 @@ const days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
 const slides = [
   {
     title: "Average time per day",
-    desc: "The average time that you spent per day using Facebook in the past 7 days. Learn more about",
+    desc: "The average time that you spent per day using Nexoria in the past 7 days. Learn more about",
     linkText: "balancing your time online.",
     time: "1h 48m",
     timeLabel: "daily average",
-    color: "#1877f2",
+    color: "#6C5CE7",
     data: [60, 30, 50, 25, 45, 70, 20],
   },
   {
     title: "Daytime average",
-    desc: "The amount of time you spent using Facebook during the daytime.",
+    desc: "The amount of time you spent using Nexoria during the daytime.",
     linkText: null,
     time: "1h 30m",
     timeLabel: "average from  07:00-22:00",
@@ -26,7 +26,7 @@ const slides = [
   },
   {
     title: "Nighttime average",
-    desc: "The amount of time you spent using Facebook during the nighttime.",
+    desc: "The amount of time you spent using Nexoria during the nighttime.",
     linkText: null,
     time: "18m",
     timeLabel: "average from  22:00-07:00",

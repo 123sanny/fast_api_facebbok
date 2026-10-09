@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { BsX, BsTag, BsGeoAlt, BsThreeDotsVertical, BsHandThumbsUp, BsChatSquare, BsShare, BsHandThumbsUpFill } from "react-icons/bs";
+import { getActiveUserName } from "../services/profileApi";
 import "./css/FullScreenCover.css";
 
-function FullScreenCover({ coverImg, onClose }) {
+function FullScreenCover({ coverImg, userName: propUserName, onClose }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(39);
+  const userName = propUserName || getActiveUserName();
 
   const handleLike = () => {
     setLiked(!liked);
@@ -42,7 +44,7 @@ function FullScreenCover({ coverImg, onClose }) {
 
         {/* Name + Location */}
         <div className="fsc-user-info">
-          <p className="fsc-name">Sanny Tiwari</p>
+          <p className="fsc-name">{userName}</p>
           <p className="fsc-location-text">— at <strong>Delhi, India.</strong></p>
           <p className="fsc-date">{dateStr}</p>
         </div>

@@ -23,7 +23,7 @@ const DeviceLogin = () => {
         <h2>Login requests</h2>
         <p className="dl-desc">
           You can see or approve login requests from apps on TVs or devices here.
-          Only continue if you are trying to log in with Facebook.
+          Only continue if you are trying to log in with Nexoria.
         </p>
 
         <h4>Enter code</h4>

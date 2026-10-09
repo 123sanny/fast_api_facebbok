@@ -1,0 +1,261 @@
+/* 🌟 Buy & Recharge Stars Modal Styles */
+
+.buy-stars-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(8, 12, 22, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  padding: 16px;
+  animation: buyStarsFadeIn 0.22s ease-out;
+}
+
+@keyframes buyStarsFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.buy-stars-modal {
+  background: #111726;
+  border: 1px solid rgba(255, 193, 7, 0.25);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  color: #f1f5f9;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 193, 7, 0.12);
+  overflow: hidden;
+}
+
+.buy-stars-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(17, 24, 39, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.buy-stars-icon-bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 193, 7, 0.15);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy-stars-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.buy-stars-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.buy-stars-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(92vh - 80px);
+}
+
+/* Star Packs Grid */
+.star-packs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .star-packs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.star-pack-card {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.star-pack-card:hover {
+  border-color: rgba(255, 193, 7, 0.5);
+  transform: translateY(-2px);
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.star-pack-card.selected {
+  border-color: #ffc107;
+  background: rgba(255, 193, 7, 0.12);
+  box-shadow: 0 0 16px rgba(255, 193, 7, 0.25);
+}
+
+.star-pack-card.featured {
+  border-color: rgba(255, 193, 7, 0.4);
+}
+
+.pack-bonus-badge {
+  position: absolute;
+  top: -8px;
+  right: 6px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.pack-stars-row {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.pack-price-tag {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #22c55e;
+  margin-bottom: 2px;
+}
+
+.pack-tag-sub {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+/* Custom amount card */
+.custom-amount-toggle-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.custom-amount-toggle-card.active {
+  border-color: #ffc107;
+  border-style: solid;
+  background: rgba(255, 193, 7, 0.08);
+}
+
+/* Payment Method Chips */
+.buy-payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.buy-method-chip {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 6px;
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.buy-method-chip:hover {
+  background: rgba(51, 65, 85, 0.8);
+  color: #fff;
+}
+
+.buy-method-chip.active {
+  background: rgba(255, 193, 7, 0.18);
+  border-color: #ffc107;
+  color: #ffc107;
+  font-weight: 700;
+}
+
+/* UPI & Card Box */
+.upi-details-card, .card-details-box {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.upi-app-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.upi-pill-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.upi-pill-btn.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.qr-box-view {
+  background: rgba(2, 6, 23, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px dashed rgba(255, 193, 7, 0.3);
+}
+
+/* Order Summary Pill */
+.order-summary-pill {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.success-pack-summary-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: left;
+}

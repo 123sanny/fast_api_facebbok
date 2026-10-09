@@ -1,5 +1,5 @@
 import React from "react";
-import { BsImage, BsUpload, BsFacebook } from "react-icons/bs";
+import { BsImage, BsUpload, BsGrid } from "react-icons/bs";
 import "./css/CoverBottomSheet.css";
 
 function CoverBottomSheet({
@@ -39,7 +39,7 @@ function CoverBottomSheet({
 
           <li onClick={onChoose}>
             <div className="cbs-icon cbs-icon-dark">
-              <BsFacebook size={20} />
+              <BsGrid size={20} />
             </div>
             <span>
               {showSeeCover

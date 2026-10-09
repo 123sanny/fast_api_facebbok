@@ -1,15 +1,19 @@
 .report-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   z-index: 9999;
   display: flex;
   align-items: flex-end;
 }
 
 .report-sheet {
-  background: white;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   max-height: 90vh;
   overflow-y: auto;
   border-radius: 16px 16px 0 0;
@@ -25,7 +29,7 @@
 .report-handle {
   width: 40px;
   height: 4px;
-  background: #ddd;
+  background: var(--color-border);
   border-radius: 2px;
   margin: 0 auto 15px;
 }
@@ -39,10 +43,11 @@
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 10px;
+  color: var(--color-text);
 }
 
 .report-top p {
-  color: #65676b;
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
   margin-bottom: 20px;
 }
@@ -55,8 +60,8 @@
 
 .report-ok-btn {
   width: 100%;
-  background: #1877f2;
-  color: white;
+  background: var(--color-primary);
+  color: #ffffff;
   border: none;
   padding: 14px;
   border-radius: 8px;
@@ -68,7 +73,7 @@
 
 .report-divider {
   height: 1px;
-  background: #f0f2f5;
+  background: var(--color-border);
   margin: 10px 0;
 }
 
@@ -78,10 +83,11 @@
   gap: 15px;
   padding: 12px 0;
   cursor: pointer;
+  color: var(--color-text);
 }
 
 .report-option p {
-  color: #65676b;
+  color: var(--color-text-secondary);
   font-size: 0.85rem;
   margin: 4px 0 0 0;
 }
@@ -91,7 +97,8 @@
   height: 40px;
   min-width: 40px;
   border-radius: 50%;
-  background: #f0f2f5;
+  background: var(--color-icon-circle-bg);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,13 +114,13 @@
 }
 
 .report-toggle-item p {
-  color: #65676b;
+  color: var(--color-text-secondary);
   font-size: 0.85rem;
   margin: 4px 0 0 0;
 }
 
 .report-learn {
-  color: #1877f2 !important;
+  color: var(--color-primary) !important;
   font-weight: 500;
 }
 
@@ -122,13 +129,13 @@
   min-width: 50px;
   height: 28px;
   border-radius: 14px;
-  background: #ccc;
+  background: var(--color-bg-active);
   position: relative;
   cursor: pointer;
 }
 
 .report-toggle.on {
-  background: #1877f2;
+  background: var(--color-primary);
 }
 
 .report-toggle::after {
@@ -136,7 +143,7 @@
   position: absolute;
   width: 22px;
   height: 22px;
-  background: white;
+  background: #ffffff;
   border-radius: 50%;
   top: 3px;
   left: 3px;

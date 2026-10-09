@@ -1,0 +1,365 @@
+/* ==========================================================================
+   Watch Party Modal CSS
+   ========================================================================== */
+
+.party-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: partyFadeIn 0.2s ease-out;
+}
+
+@keyframes partyFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.party-modal-dialog {
+  width: 100%;
+  max-width: 860px;
+  max-height: 92vh;
+  background-color: #18191a;
+  border-radius: var(--radius-xl, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #e4e6eb;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+.party-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #242526;
+}
+
+.party-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.live-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e41e3f;
+  box-shadow: 0 0 10px #e41e3f;
+  animation: pulseDot 1s infinite alternate;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+.party-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: #e41e3f;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.party-header-left h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.party-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.synced-count-pill {
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(49, 162, 76, 0.18);
+  color: #31a24c;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #31a24c;
+}
+
+.party-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #b0b3b8;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.party-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Layout Grid */
+.party-body-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .party-body-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 240px;
+  }
+}
+
+/* Video Column */
+.party-player-col {
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+}
+
+.party-video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.party-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating reaction layer */
+.party-floating-reactions-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.party-fly-emoji {
+  position: absolute;
+  bottom: 20px;
+  font-size: 32px;
+  animation: flyUpAnim 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes flyUpAnim {
+  0% { transform: translateY(0) scale(0.6); opacity: 1; }
+  100% { transform: translateY(-160px) scale(1.3); opacity: 0; }
+}
+
+/* Video Controls */
+.party-video-controls-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.p-ctrl-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.p-timeline-wrap {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.p-progress-bar {
+  height: 100%;
+  background: #1877f2;
+}
+
+.p-sync-time {
+  font-size: 11px;
+  color: #e4e6eb;
+}
+
+/* Reactions Toolbar */
+.party-reactions-toolbar {
+  padding: 10px 14px;
+  background-color: #18191a;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reaction-burst-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reaction-burst-btn:hover {
+  transform: scale(1.25);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.party-mic-toggle-btn {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.party-mic-toggle-btn.mic-live {
+  background: #31a24c;
+  border-color: #31a24c;
+}
+
+/* Chat Column */
+.party-chat-col {
+  display: flex;
+  flex-direction: column;
+  background-color: #242526;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.party-chat-header {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.party-chat-header h6 {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.party-chat-header small {
+  font-size: 11px;
+  color: #b0b3b8;
+}
+
+.party-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.party-chat-bubble {
+  background-color: #18191a;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.pc-user-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.pc-username {
+  font-size: 12px;
+  color: #1877f2;
+}
+
+.pc-time {
+  font-size: 10px;
+  color: #8a8d91;
+}
+
+.pc-text {
+  margin: 0;
+  font-size: 12.5px;
+  color: #e4e6eb;
+}
+
+.party-chat-input-bar {
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  gap: 6px;
+}
+
+.party-text-input {
+  flex: 1;
+  background-color: #18191a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  color: #fff;
+  outline: none;
+}
+
+.party-send-btn {
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.party-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

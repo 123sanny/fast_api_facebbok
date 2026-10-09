@@ -41,7 +41,11 @@ function LanguagesPage({ initialValue = "English, Hindi", onClose, onSave }) {
 
       {/* Footer */}
       <div className="esp-footer">
-        <div className="esp-privacy-row">
+        <div 
+          className="esp-privacy-row"
+          style={{ cursor: "pointer" }}
+          onClick={() => setPrivacy(prev => prev === "Public" ? "Friends" : prev === "Friends" ? "Only me" : "Public")}
+        >
           <div>
             <p className="esp-privacy-label">Who can see this?</p>
             <p className="esp-privacy-value">{privacy}</p>
