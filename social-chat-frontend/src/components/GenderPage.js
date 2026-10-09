@@ -55,7 +55,7 @@ function GenderPage({ onClose, onSave }) {
         {/* System Pronouns */}
         <div className="gp-section-title" style={{ marginTop: 28 }}>System pronouns</div>
         <p className="gp-section-sub">
-          Used for notifications from Facebook. System pronouns are public and can be seen by anyone.{" "}
+          Used for notifications from Nexoria. System pronouns are public and can be seen by anyone.{" "}
           <span className="gp-learn-more">Learn more</span>
         </p>
         <div className="gp-field gp-field-select" onClick={() => setShowSysDropdown(!showSysDropdown)}>

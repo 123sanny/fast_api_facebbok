@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BsX, BsChevronRight, BsTrash } from "react-icons/bs";
+import { BsX, BsChevronRight } from "react-icons/bs";
 import ChooseAudiencePage from "./ChooseAudiencePage";
 import "./css/EditSubPage.css";
 

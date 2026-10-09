@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Nexoria Modern Responsive Global Theme & Design Tokens
+   Nexoria High-Performance Light & Dark Modes
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --color-primary: #1877f2;
+  --color-primary-hover: #166fe5;
+  --color-primary-dark: #0e56ba;
+  --color-primary-light: #e7f3ff;
+  --color-primary-soft: rgba(24, 119, 242, 0.1);
+
+  --color-accent: #00a884;
+  --color-accent-dark: #008f6f;
+  --color-danger: #e41e3f;
+  --color-warning: #f7b928;
+  --color-success: #31a24c;
+  --color-info: #00bcd4;
+
+  /* Reaction Colors */
+  --react-like: #1877f2;
+  --react-love: #f33e58;
+  --react-care: #f7b125;
+  --react-haha: #f7b125;
+  --react-wow: #f7b125;
+  --react-sad: #f7b125;
+  --react-angry: #e9710f;
+
+  /* Light Theme Defaults */
+  --color-bg: #f0f2f5;
+  --color-bg-hover: #e4e6eb;
+  --color-bg-active: #d8dadf;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f7f8fa;
+  --color-surface-hover: #f2f3f5;
+  
+  --color-card: #ffffff;
+  --color-card-border: #ced0d4;
+  --color-border: #e4e6eb;
+  --color-border-subtle: #f0f2f5;
+  --color-divider: #e4e6eb;
+
+  --color-text: #050505;
+  --color-text-secondary: #65676b;
+  --color-text-muted: #8a8d91;
+  --color-text-placeholder: #8a8d91;
+  --color-icon: #65676b;
+  --color-icon-active: #1877f2;
+  --color-icon-circle-bg: #e4e6eb;
+  --color-icon-circle-hover: #d8dadf;
+
+  --color-input-bg: #f0f2f5;
+  --color-input-border: transparent;
+  --color-input-focus-border: #1877f2;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15), 0 12px 28px rgba(0, 0, 0, 0.2);
+  --shadow-dropdown: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-chat: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --header-height: 56px;
+  --header-z: 1000;
+  --modal-z: 2000;
+  --dropdown-z: 1500;
+  --toast-z: 3000;
+
+  --bs-primary: #1877f2;
+  --bs-primary-rgb: 24, 119, 242;
+}
+
+/* ==========================================================================
+   Nexoria Dark Theme Overrides
+   ========================================================================== */
+:root[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+[data-theme="dark"],
+.dark-theme,
+body.dark-mode {
+  --color-bg: #18191a;
+  --color-bg-hover: #3a3b3c;
+  --color-bg-active: #4e4f50;
+  --color-surface: #242526;
+  --color-surface-secondary: #18191a;
+  --color-surface-hover: #3a3b3c;
+
+  --color-card: #242526;
+  --color-card-border: #393a3b;
+  --color-border: #393a3b;
+  --color-border-subtle: #2f3031;
+  --color-divider: #393a3b;
+
+  --color-text: #e4e6eb;
+  --color-text-secondary: #b0b3b8;
+  --color-text-muted: #8a8d91;
+  --color-text-placeholder: #8a8d91;
+  --color-icon: #b0b3b8;
+  --color-icon-active: #2d88ff;
+  --color-icon-circle-bg: #3a3b3c;
+  --color-icon-circle-hover: #4e4f50;
+
+  --color-input-bg: #3a3b3c;
+  --color-input-border: #393a3b;
+  --color-input-focus-border: #2d88ff;
+  --color-primary-light: rgba(45, 136, 255, 0.2);
+  --color-primary-soft: rgba(45, 136, 255, 0.15);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
+  --shadow-dropdown: 0 12px 28px 0 rgba(0, 0, 0, 0.7);
+  --shadow-chat: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+/* Base resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Common utility classes */
+.text-primary { color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-text-secondary) !important; }
+.text-muted { color: var(--color-text-muted) !important; }
+.bg-surface { background-color: var(--color-surface) !important; }
+.bg-main { background-color: var(--color-bg) !important; }
+.border-theme { border-color: var(--color-border) !important; }

@@ -23,9 +23,9 @@ function AiCreatorPage({ initialValue = "No", onClose, onSave }) {
                 <div className="acp-body">
                     <p className="acp-question">
                         Does this profile regularly share AI-generated content?{" "}
-                        <a href="#" className="acp-learn-more" onClick={(e) => e.preventDefault()}>
+                        <button type="button" className="acp-learn-more" style={{ background: "none", border: "none", padding: 0, textDecoration: "underline", color: "var(--color-primary)", cursor: "pointer" }} onClick={(e) => e.preventDefault()}>
                             Learn more
-                        </a>
+                        </button>
                     </p>
 
                     <label className="acp-option">

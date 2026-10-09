@@ -1,0 +1,458 @@
+/* ==========================================================================
+   AUDIO LOUNGE - EXACT PIXEL-PERFECT UI (PULSE LOUNGE)
+   ========================================================================== */
+
+.pulse-lounge-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pulseFadeIn 0.25s ease-out;
+}
+
+.pulse-lounge-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: #181a1d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(24, 119, 242, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   1. MODAL TOP HEADER
+   ========================================================================== */
+.lounge-top-header {
+  padding: 20px 24px 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lounge-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lounge-wave-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #1e293b;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+  font-size: 20px;
+  box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.lounge-title-meta h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 3px 0;
+  letter-spacing: -0.2px;
+}
+
+.lounge-title-meta .lounge-sub-meta {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lounge-close-icon-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lounge-close-icon-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   2. BACKGROUND SOUNDSCAPE BAR
+   ========================================================================== */
+.lounge-soundscape-bar {
+  padding: 10px 24px;
+  background: #1e2126;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.soundscape-label {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.soundscape-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.soundscape-pill {
+  background: #272b32;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.soundscape-pill:hover {
+  background: #323842;
+}
+
+.soundscape-pill.active {
+  background: rgba(24, 119, 242, 0.18);
+  border-color: #1877f2;
+  color: #60a5fa;
+  box-shadow: 0 0 10px rgba(24, 119, 242, 0.3);
+}
+
+.soundscape-pill.off-pill {
+  padding: 5px 14px;
+}
+
+/* ==========================================================================
+   3. ON STAGE (SPEAKERS) SECTION
+   ========================================================================== */
+.lounge-content-body {
+  padding: 20px 24px 10px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lounge-section-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.lounge-speakers-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.lounge-speaker-card {
+  background: #20242a;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lounge-speaker-card.is-speaking {
+  border-color: #22c55e;
+  background: #1c2724;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+}
+
+.speaker-avatar-frame {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 8px;
+}
+
+.speaker-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid transparent;
+}
+
+.lounge-speaker-card.is-speaking .speaker-avatar-img {
+  border-color: #22c55e;
+}
+
+.speaker-speaking-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+  animation: speakingRipple 1.4s infinite ease-out;
+}
+
+@keyframes speakingRipple {
+  0% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+
+.speaker-mic-bubble {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.speaker-mic-bubble.live {
+  color: #38bdf8;
+}
+
+.speaker-mic-bubble.muted {
+  color: #ef4444;
+}
+
+.speaker-name-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 3px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.speaker-role-desc {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   4. LISTENERS IN THE LOUNGE SECTION
+   ========================================================================== */
+.lounge-listeners-section {
+  margin-top: 4px;
+}
+
+.lounge-listeners-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.lounge-listener-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 58px;
+  flex-shrink: 0;
+}
+
+.listener-avatar-box {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 4px;
+}
+
+.listener-avatar-box img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.listener-hand-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #f59e0b;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.7);
+  animation: handShake 0.6s infinite alternate;
+}
+
+@keyframes handShake {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(15deg); }
+}
+
+.listener-name-label {
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* ==========================================================================
+   5. BOTTOM ACTION CONTROLS BAR
+   ========================================================================== */
+.lounge-bottom-actions {
+  padding: 18px 24px 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-leave-quietly {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #f87171;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-leave-quietly:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.lounge-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-raise-hand {
+  background: #272b32;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-raise-hand:hover {
+  background: #333942;
+}
+
+.btn-raise-hand.hand-active {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+
+.btn-mic-toggle {
+  background: #1877f2;
+  border: none;
+  color: #ffffff;
+  padding: 9px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
+}
+
+.btn-mic-toggle:hover {
+  background: #166fe5;
+}
+
+.btn-mic-toggle.unmuted-speaking {
+  background: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+/* ==========================================================================
+   ANIMATIONS & RESPONSIVENESS
+   ========================================================================== */
+@keyframes pulseFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .lounge-speakers-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .lounge-bottom-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lounge-actions-right {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-leave-quietly, .btn-raise-hand, .btn-mic-toggle {
+    justify-content: center;
+  }
+}

@@ -1,8 +1,18 @@
-.terms-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background: #fff;
+.terms-page-root {
   min-height: 100vh;
-  color: #1c1e21;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.terms-container {
+  font-family: inherit;
+  background: var(--color-surface);
+  min-height: 100vh;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  margin-bottom: 60px;
 }
 
 /* Header */
@@ -11,23 +21,25 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 15px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .terms-header h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
+  color: var(--color-text);
 }
 
 .terms-back {
   font-size: 1.3rem;
   cursor: pointer;
-  color: #1c1e21;
+  color: var(--color-icon);
 }
 
 .terms-divider {
   height: 1px;
-  background: #e4e6ea;
+  background: var(--color-border);
 }
 
 /* List */
@@ -39,15 +51,14 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 18px 0;
+  padding: 18px 8px;
   cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s;
 }
 
 .terms-item:hover {
-  background: #f7f8fa;
-  border-radius: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
+  background: var(--color-bg-hover);
 }
 
 .terms-icon-wrap {
@@ -55,15 +66,15 @@
   height: 52px;
   min-width: 52px;
   border-radius: 50%;
-  background: #f0f2f5;
+  background: var(--color-icon-circle-bg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .terms-icon {
-  font-size: 1.5rem;
-  color: #444;
+  font-size: 1.4rem;
+  color: var(--color-text);
 }
 
 .terms-text {
@@ -74,27 +85,93 @@
   font-size: 1rem;
   display: block;
   margin-bottom: 3px;
+  color: var(--color-text);
 }
 
 .terms-text p {
   margin: 0;
-  color: #65676b;
+  color: var(--color-text-secondary);
   font-size: 0.88rem;
   line-height: 1.4;
 }
 
 .terms-arrow {
-  color: #65676b;
+  color: var(--color-text-muted);
   font-size: 1rem;
+}
+
+/* Detailed Policy View */
+.policy-detail-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.policy-detail-content {
+  padding: 20px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.policy-intro-badge {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.policy-section-block h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--color-text);
+}
+
+.policy-section-block p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.policy-footer-note {
+  display: flex;
+  align-items: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-text);
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.btn-back-to-terms {
+  background-color: var(--color-bg-hover);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.15s;
+}
+
+.btn-back-to-terms:hover {
+  background-color: var(--color-bg-active);
 }
 
 /* Desktop */
 @media (min-width: 768px) {
   .terms-container {
-    max-width: 600px;
-    margin: 30px auto;
+    max-width: 680px;
+    margin: 20px auto 60px;
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-sm);
     min-height: auto;
   }
 
@@ -103,7 +180,7 @@
   }
 
   .terms-list {
-    padding: 0 25px 25px;
+    padding: 0 20px 20px;
   }
 }
 
@@ -111,7 +188,11 @@
 @media (max-width: 767px) {
   .terms-container {
     max-width: 100%;
-    margin: 0;
+    margin: 0 0 65px;
     border-radius: 0;
+    border: none;
+  }
+  .policy-detail-content {
+    padding: 16px 16px 40px;
   }
 }

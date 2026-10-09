@@ -58,7 +58,7 @@
 }
 
 .op-meta-icon {
-  color: #0064e0;
+  color: var(--color-primary);
   font-size: 1.3rem;
 }
 

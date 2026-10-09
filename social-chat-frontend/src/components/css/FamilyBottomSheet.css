@@ -64,7 +64,7 @@
   transition: background 0.15s;
 }
 
-.fbs-item:active { background: #f0f2f5; }
+.fbs-item:active { background: var(--color-bg); }
 
 .fbs-icon {
   width: 48px;

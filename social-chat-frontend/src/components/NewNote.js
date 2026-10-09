@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { BsX, BsMusicNoteBeamed, BsEmojiSmile, BsChevronLeft, BsSearch, BsPlayFill, BsPauseFill } from "react-icons/bs";
+import { BsX, BsMusicNoteBeamed, BsEmojiSmile, BsChevronLeft, BsSearch, BsPlayFill } from "react-icons/bs";
 import { HiOutlineGif } from "react-icons/hi2";
+import { getActiveUserId, getActiveUserName, getUserStorageItem } from "../services/profileApi";
 import "./css/NewNote.css";
 
 const NewNote = ({ onClose }) => {
@@ -9,6 +10,9 @@ const NewNote = ({ onClose }) => {
   const [showMusicPicker, setShowMusicPicker] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const currentUserId = getActiveUserId();
+  const userName = getActiveUserName();
+  const userPic = getUserStorageItem("avatar", `https://i.pravatar.cc/150?u=${currentUserId}`, currentUserId);
 
   // Mock Music Data
   const musicTracks = [
@@ -31,6 +35,27 @@ const NewNote = ({ onClose }) => {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const handleShareNote = () => {
+    if (!noteText.trim()) return;
+    const newNote = {
+      id: Date.now(),
+      text: noteText.trim(),
+      music: selectedMusic ? selectedMusic.title : null,
+      artist: selectedMusic ? selectedMusic.artist : null,
+      time: "Just now",
+      userName: userName,
+      userPic: userPic
+    };
+    try {
+      localStorage.setItem("nexoria_user_note", JSON.stringify(newNote));
+    } catch (e) {
+      console.error(e);
+    }
+    window.dispatchEvent(new CustomEvent("note-created", { detail: newNote }));
+    alert("🎵 Note shared successfully with your friends for 24 hours!");
+    onClose();
   };
 
   return (
@@ -67,7 +92,11 @@ const NewNote = ({ onClose }) => {
       <div className="note-header">
         <BsX size={32} onClick={onClose} style={{ cursor: 'pointer' }} />
         <h5 className="mb-0 fw-bold">New note</h5>
-        <button className={`share-btn ${noteText.length > 0 ? 'active' : ''}`} disabled={noteText.length === 0}>
+        <button 
+          className={`share-btn ${noteText.trim().length > 0 ? 'active' : ''}`} 
+          disabled={!noteText.trim()}
+          onClick={handleShareNote}
+        >
           Share
         </button>
       </div>
@@ -93,7 +122,7 @@ const NewNote = ({ onClose }) => {
           </div>
 
           <div className="profile-wrapper">
-            <img src="https://i.pravatar.cc/150?u=sanny" alt="profile" className="note-profile-img" />
+            <img src={userPic} alt="profile" className="note-profile-img" />
           </div>
           <span className="char-count text-muted">{noteText.length}/60</span>
         </div>

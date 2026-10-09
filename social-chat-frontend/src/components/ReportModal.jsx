@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BsExclamationTriangle } from "react-icons/bs";
 import { BsBugFill } from "react-icons/bs";
 import "./css/ReportModal.css";
 
 const ReportModal = ({ onClose }) => {
+  const navigate = useNavigate();
+  const [shakeEnabled, setShakeEnabled] = useState(true);
+  const [floatButtonEnabled, setFloatButtonEnabled] = useState(true);
+
+  const handleContinueToReport = () => {
+    if (onClose) onClose();
+    navigate("/support?view=report_problem");
+  };
+
+  const handleAbuseClick = () => {
+    if (onClose) onClose();
+    navigate("/support?view=support_inbox&tab=reports");
+  };
+
   return (
     <div className="report-overlay" onClick={onClose}>
       <div className="report-sheet" onClick={e => e.stopPropagation()}>
@@ -19,7 +34,7 @@ const ReportModal = ({ onClose }) => {
 
         <div className="report-divider"></div>
 
-        <div className="report-option">
+        <div className="report-option" onClick={handleAbuseClick} role="button" tabIndex={0}>
           <div className="report-icon-circle">
             <BsExclamationTriangle />
           </div>
@@ -31,7 +46,7 @@ const ReportModal = ({ onClose }) => {
 
         <div className="report-divider"></div>
 
-        <div className="report-option">
+        <div className="report-option" onClick={handleContinueToReport} role="button" tabIndex={0}>
           <div className="report-icon-circle">
             <BsBugFill />
           </div>
@@ -43,9 +58,12 @@ const ReportModal = ({ onClose }) => {
         <div className="report-toggle-item">
           <div>
             <strong>Shake phone to report a problem</strong>
-            <p className="report-learn">Learn more</p>
+            <p className="report-learn" onClick={() => { if(onClose) onClose(); navigate('/support?view=help_centre'); }} style={{ cursor: "pointer" }}>Learn more</p>
           </div>
-          <div className="report-toggle on"></div>
+          <div
+            className={`report-toggle ${shakeEnabled ? "on" : ""}`}
+            onClick={() => setShakeEnabled(!shakeEnabled)}
+          ></div>
         </div>
 
         <div className="report-toggle-item">
@@ -53,7 +71,10 @@ const ReportModal = ({ onClose }) => {
             <strong>Show button to report a problem</strong>
             <p>Available on selected screens only. Displays a small button on-screen that can be repositioned by dragging.</p>
           </div>
-          <div className="report-toggle on"></div>
+          <div
+            className={`report-toggle ${floatButtonEnabled ? "on" : ""}`}
+            onClick={() => setFloatButtonEnabled(!floatButtonEnabled)}
+          ></div>
         </div>
 
       </div>

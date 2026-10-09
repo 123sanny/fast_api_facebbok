@@ -3,11 +3,9 @@ import { BsX, BsChevronRight, BsPencilFill, BsLink45Deg, BsPlusLg, BsTrash } fro
 import ChooseAudiencePage from "./ChooseAudiencePage";
 import "./css/Linkspage.css";
 
-function LinksPage({ onClose, onSave }) {
-  const [links, setLinks] = useState([
-    "https://www.linkedin.com/in/sanny-tiwari-28945b240/"
-  ]);
-  const [privacy, setPrivacy] = useState("Public");
+function LinksPage({ initialLinks = [], initialPrivacy = "Public", onClose, onSave }) {
+  const [links, setLinks] = useState(initialLinks || []);
+  const [privacy, setPrivacy] = useState(initialPrivacy || "Public");
   const [showAudience, setShowAudience] = useState(false);
 
   // Add new link

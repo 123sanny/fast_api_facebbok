@@ -1,16 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BsArrowLeft, BsGlobeAmericas, BsPeopleFill, 
   BsPersonDashFill, BsPersonFill, BsLockFill, 
   BsInstagram
 } from "react-icons/bs";
+import { getActiveUserId, getActiveUserHandle, getUserStorageItem } from "../services/profileApi";
+import { fetchPrivacySettingsApi, updatePrivacySettingsApi } from "../services/settingsApi";
 import "./css/PrivacyPages.css";
 
 const PrivacyPages = ({ type, onClose }) => {
+  const currentUserId = getActiveUserId();
+  const userHandle = getActiveUserHandle();
+  const userAvatar = getUserStorageItem("avatar", `https://i.pravatar.cc/150?u=${currentUserId}`, currentUserId);
+
+  const [selectedAudience, setSelectedAudience] = useState("Public");
+  const [setAsDefault, setSetAsDefault] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    const loadAudience = async () => {
+      try {
+        const res = await fetchPrivacySettingsApi(currentUserId);
+        if (res && res.who_can_see_posts) {
+          setSelectedAudience(res.who_can_see_posts);
+        }
+      } catch (err) {
+        console.warn("Could not load audience from backend:", err);
+      }
+    };
+    loadAudience();
+  }, [currentUserId]);
+
   if (!type) return null;
 
+  const handleDoneAudience = async () => {
+    if (setAsDefault) {
+      setIsSaving(true);
+      try {
+        await updatePrivacySettingsApi(currentUserId, { who_can_see_posts: selectedAudience });
+      } catch (err) {
+        console.warn("Could not save default audience:", err);
+      } finally {
+        setIsSaving(false);
+      }
+    }
+    if (onClose) onClose(selectedAudience);
+  };
+
   // --- 1. AUDIENCE PAGE (FULL SCREEN) ---
- if (type === 'public' || type === 'instagram') {
+  if (type === 'public' || type === 'instagram') {
     return (
       <div className="privacy-full-screen">
         {/* Header Section */}
@@ -28,14 +66,39 @@ const PrivacyPages = ({ type, onClose }) => {
               <p className="text-muted small">
                 Your post will appear in Feed, on your profile and in search results.
                 <br /><br />
-                Your default audience is set to <b>Public</b>, but you can change the audience of this specific post.
+                Your default audience is set to <b>{selectedAudience}</b>, but you can change the audience of this specific post.
               </p>
               <div className="audience-list mt-3">
-                <AudienceOption icon={<BsGlobeAmericas />} title="Public" desc="Anyone on or off Nexoria" selected />
-                <AudienceOption icon={<BsPeopleFill />} title="Friends" desc="Your friends on Nexoria" />
-                <AudienceOption icon={<BsPersonDashFill />} title="Friends except..." desc="Don't show to some friends" />
-                <AudienceOption icon={<BsPersonFill />} title="Specific friends" desc="Only show to some friends" />
-                <AudienceOption icon={<BsLockFill />} title="Only me" desc="Only me" />
+                {[
+                  { title: "Public", desc: "Anyone on or off Nexoria", icon: <BsGlobeAmericas /> },
+                  { title: "Friends", desc: "Your friends on Nexoria", icon: <BsPeopleFill /> },
+                  { title: "Friends except...", desc: "Don't show to some friends", icon: <BsPersonDashFill /> },
+                  { title: "Specific friends", desc: "Only show to some friends", icon: <BsPersonFill /> },
+                  { title: "Only me", desc: "Only me", icon: <BsLockFill /> }
+                ].map(opt => (
+                  <div 
+                    key={opt.title}
+                    className="d-flex align-items-center justify-content-between py-3"
+                    onClick={() => setSelectedAudience(opt.title)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <div className="d-flex align-items-center">
+                      <div className="audience-icon-circle me-3">{opt.icon}</div>
+                      <div>
+                        <h6 className="mb-0 fw-bold">{opt.title}</h6>
+                        <small className="text-muted d-block">{opt.desc}</small>
+                      </div>
+                    </div>
+                    <input 
+                      type="radio" 
+                      name="audience" 
+                      className="form-check-input" 
+                      checked={selectedAudience === opt.title} 
+                      onChange={() => setSelectedAudience(opt.title)} 
+                      style={{width: '22px', height: '22px'}} 
+                    />
+                  </div>
+                ))}
               </div>
             </>
           )}
@@ -46,11 +109,11 @@ const PrivacyPages = ({ type, onClose }) => {
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <div className="d-flex align-items-center">
                   <div className="position-relative me-3">
-                    <img src="https://i.pravatar.cc/45" className="rounded-circle" alt="user" style={{width:'45px', height:'45px'}} />
+                    <img src={userAvatar} className="rounded-circle" alt="user" style={{width:'45px', height:'45px'}} />
                     <BsInstagram className="position-absolute bottom-0 end-0 bg-white rounded-circle text-danger" style={{fontSize: '14px', padding:'1px'}} />
                   </div>
                   <div>
-                    <h6 className="mb-0 fw-bold">sanny.tiwari.355</h6>
+                    <h6 className="mb-0 fw-bold">{userHandle}</h6>
                     <small className="text-muted">Instagram · Public</small>
                   </div>
                 </div>
@@ -66,8 +129,8 @@ const PrivacyPages = ({ type, onClose }) => {
               </div>
               <div className="border-top pt-3 text-center mt-5">
                  <p className="small text-muted mb-0">
-                   <span className="text-primary fw-bold">∞ Meta</span><br/>
-                   To change your settings, go to <a href="#" className="text-decoration-none">Accounts Centre</a>.
+                   <span className="text-primary fw-bold">∞ Nexoria</span><br/>
+                   To change your settings, go to <span style={{ color: "var(--color-primary)", cursor: "pointer", textDecoration: "underline" }}>Accounts Centre</span>.
                  </p>
               </div>
             </div>
@@ -75,12 +138,20 @@ const PrivacyPages = ({ type, onClose }) => {
 
           {/* Bottom Done Button for Full Screen */}
           {type === 'public' && (
-            <div className="mt-5 pt-5">
+            <div className="mt-4 pt-4">
               <div className="d-flex align-items-center mb-3">
-                <input type="checkbox" className="form-check-input me-2" id="setDefault" />
-                <label htmlFor="setDefault" className="text-muted small">Set as default audience.</label>
+                <input 
+                  type="checkbox" 
+                  className="form-check-input me-2" 
+                  id="setDefault" 
+                  checked={setAsDefault} 
+                  onChange={(e) => setSetAsDefault(e.target.checked)} 
+                />
+                <label htmlFor="setDefault" className="text-muted small" style={{ cursor: "pointer" }}>Save as default audience in settings database.</label>
               </div>
-              <button className="btn btn-primary w-100 rounded-pill py-2 fw-bold" onClick={onClose}>Done</button>
+              <button className="btn btn-primary w-100 rounded-pill py-2 fw-bold" onClick={handleDoneAudience} disabled={isSaving}>
+                {isSaving ? "Saving..." : "Done"}
+              </button>
             </div>
           )}
         </div>
@@ -104,7 +175,7 @@ const PrivacyPages = ({ type, onClose }) => {
                 <h6 className="fw-bold mb-1">Add AI label</h6>
                 <p className="text-muted small">
                   We require you to label certain realistic content that's made with AI. 
-                  <a href="#" className="ms-1 text-decoration-none">Learn more</a>
+                  <span className="ms-1" style={{ color: "var(--color-primary)", cursor: "pointer", textDecoration: "underline" }}>Learn more</span>
                 </p>
               </div>
               <div className="form-check form-switch">

@@ -1,178 +1,323 @@
+/* ==========================================================================
+   SimpleTextFieldPage CSS - Location & Text Field Modal
+   ========================================================================== */
+
 .stf-overlay {
   position: fixed;
   inset: 0;
-  z-index: 100;
-  background: #ffffff;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 2200;
   display: flex;
-  flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-.stf-card {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  background: #fff;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: stfFadeIn 0.2s ease-out;
 }
 
-/* Header */
+@keyframes stfFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stf-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e4e6eb);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  color: var(--color-text, #050505);
+  display: flex;
+  flex-direction: column;
+  animation: stfSlideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body[data-theme="dark"] .stf-card {
+  background: var(--color-surface, #242526);
+  border-color: var(--color-border, #393a3b);
+  color: var(--color-text, #e4e6eb);
+}
+
+@keyframes stfSlideUp {
+  from { transform: translateY(20px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
 .stf-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
-  border-bottom: 1px solid #e4e6eb;
-  flex-shrink: 0;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border, #e4e6eb);
 }
+
+body[data-theme="dark"] .stf-header {
+  border-bottom-color: var(--color-border, #393a3b);
+}
+
 .stf-header h2 {
-  font-size: 19px;
-  font-weight: 700;
   margin: 0;
-  color: #050505;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text, #050505);
+  flex: 1;
+  text-align: center;
 }
+
+body[data-theme="dark"] .stf-header h2 {
+  color: var(--color-text, #e4e6eb);
+}
+
 .stf-close {
-  background: none;
+  background: transparent;
   border: none;
   font-size: 18px;
+  color: var(--color-icon, #65676b);
   cursor: pointer;
-  color: #050505;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.15s;
 }
-.stf-close:hover { background: #f0f2f5; }
-.stf-header-chevron { color: #65676b; font-size: 18px; }
 
-/* Body */
+.stf-close:hover {
+  background: var(--color-bg-hover, #f0f2f5);
+}
+
+body[data-theme="dark"] .stf-close:hover {
+  background: var(--color-bg-hover, #3a3b3c);
+  color: var(--color-text, #e4e6eb);
+}
+
+.stf-header-chevron {
+  width: 32px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Body
+   -------------------------------------------------------------------------- */
 .stf-body {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
 .stf-input-wrap {
-  border: 1px solid #ccd0d5;
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--color-border, #ced0d4);
+  border-radius: 12px;
+  padding: 8px 14px;
+  background: var(--color-bg, #f0f2f5);
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
+
+body[data-theme="dark"] .stf-input-wrap {
+  background: var(--color-bg, #18191a);
+  border-color: var(--color-border, #393a3b);
+}
+
+.stf-input-wrap:focus-within {
+  border-color: #1877f2;
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
 .stf-floating-label {
-  display: block;
-  color: #65676b;
-  font-size: 13px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-text-secondary, #65676b);
   margin-bottom: 2px;
 }
+
+body[data-theme="dark"] .stf-floating-label {
+  color: var(--color-text-secondary, #b0b3b8);
+}
+
 .stf-input {
   width: 100%;
   border: none;
-  outline: none;
-  font-size: 20px;
-  font-family: inherit;
-  color: #050505;
   background: transparent;
+  outline: none;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--color-text, #050505);
+}
+
+body[data-theme="dark"] .stf-input {
+  color: var(--color-text, #e4e6eb);
 }
 
 .stf-remove-btn {
-  width: 100%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #e4e6eb;
-  border: none;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #ef4444;
   border-radius: 8px;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #050505;
+  padding: 8px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
   cursor: pointer;
-  margin-bottom: 24px;
+  align-self: flex-start;
+  transition: all 0.15s;
 }
-.stf-remove-btn:hover { background: #d8dadf; }
 
-.stf-privacy-section {
-  border-top: 1px solid #e4e6eb;
-  padding-top: 12px;
+.stf-remove-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
 }
+
+/* --------------------------------------------------------------------------
+   Privacy Section
+   -------------------------------------------------------------------------- */
+.stf-privacy-section {
+  border: 1px solid var(--color-border, #e4e6eb);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-bg, #f0f2f5);
+}
+
+body[data-theme="dark"] .stf-privacy-section {
+  background: var(--color-bg, #18191a);
+  border-color: var(--color-border, #393a3b);
+}
+
 .stf-privacy-row {
   width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: none;
-  border: none;
-  padding: 8px 0;
   cursor: pointer;
-  text-align: left;
+  color: var(--color-text, #050505);
 }
-.stf-privacy-text { display: flex; flex-direction: column; }
-.stf-privacy-text strong { font-size: 16px; color: #050505; }
-.stf-privacy-value { font-size: 14px; color: #65676b; margin-top: 2px; }
-.stf-privacy-chevron { color: #65676b; transition: transform 0.15s; }
-.stf-rotated { transform: rotate(90deg); }
 
-.stf-privacy-options {
+body[data-theme="dark"] .stf-privacy-row {
+  color: var(--color-text, #e4e6eb);
+}
+
+.stf-privacy-text {
   display: flex;
   flex-direction: column;
-  padding: 4px 0 0 0;
+  align-items: flex-start;
+  gap: 2px;
 }
+
+.stf-privacy-text strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stf-privacy-value {
+  font-size: 12.5px;
+  color: #1877f2;
+  font-weight: 600;
+}
+
+.stf-privacy-chevron {
+  color: var(--color-icon, #65676b);
+  transition: transform 0.2s ease;
+}
+
+.stf-privacy-chevron.stf-rotated {
+  transform: rotate(90deg);
+}
+
+.stf-privacy-options {
+  border-top: 1px solid var(--color-border, #e4e6eb);
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-theme="dark"] .stf-privacy-options {
+  border-top-color: var(--color-border, #393a3b);
+}
+
 .stf-privacy-option {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border, #e4e6eb);
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: none;
-  border: none;
-  padding: 10px 8px;
-  font-size: 15px;
-  color: #050505;
   cursor: pointer;
-  border-radius: 6px;
+  color: var(--color-text, #050505);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
 }
-.stf-privacy-option:hover { background: #f0f2f5; }
 
-/* Footer */
-.stf-footer {
-  padding: 16px 20px;
-  border-top: 1px solid #e4e6eb;
-  flex-shrink: 0;
+body[data-theme="dark"] .stf-privacy-option {
+  border-bottom-color: var(--color-border, #393a3b);
+  color: var(--color-text, #e4e6eb);
 }
+
+.stf-privacy-option:last-child {
+  border-bottom: none;
+}
+
+.stf-privacy-option:hover {
+  background: var(--color-bg-hover, rgba(0, 0, 0, 0.05));
+}
+
+body[data-theme="dark"] .stf-privacy-option:hover {
+  background: var(--color-bg-hover, rgba(255, 255, 255, 0.05));
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.stf-footer {
+  padding: 14px 18px;
+  border-top: 1px solid var(--color-border, #e4e6eb);
+  background: var(--color-surface, #ffffff);
+}
+
+body[data-theme="dark"] .stf-footer {
+  border-top-color: var(--color-border, #393a3b);
+  background: var(--color-surface, #242526);
+}
+
 .stf-save-btn {
   width: 100%;
+  height: 42px;
   background: #1877f2;
-  color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 16px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
 }
-.stf-save-btn:disabled { background: #e4e6eb; color: #bcc0c4; cursor: not-allowed; }
 
-/* Desktop */
-@media (min-width: 768px) {
-  .stf-overlay {
-    background: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .stf-card {
-    flex: none;
-    width: 100%;
-    max-width: 560px;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-  }
-  .stf-header { padding: 16px 20px; }
-  .stf-body { overflow-y: auto; }
-  .stf-footer {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .stf-save-btn { width: auto; padding: 8px 24px; }
+.stf-save-btn:hover:not(:disabled) {
+  background: #166fe5;
+}
+
+.stf-save-btn:disabled {
+  background: var(--color-bg-hover, #e4e6eb);
+  color: var(--color-text-secondary, #bcc0c4);
+  cursor: not-allowed;
+}
+
+body[data-theme="dark"] .stf-save-btn:disabled {
+  background: #3a3b3c;
+  color: #777a7e;
 }

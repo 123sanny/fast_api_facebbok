@@ -1,0 +1,408 @@
+/* ==========================================================================
+   Nexoria MicroTip Modal CSS
+   ========================================================================== */
+
+.tip-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: tipFadeIn 0.2s ease-out;
+}
+
+@keyframes tipFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tip-modal-dialog {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--color-surface, #ffffff);
+  border-radius: var(--radius-xl, 16px);
+  border: 1px solid var(--color-border, #e4e6eb);
+  overflow: hidden;
+  animation: tipPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--color-text, #050505);
+}
+
+body[data-theme="dark"] .tip-modal-dialog {
+  background-color: var(--color-surface, #242526);
+  border-color: var(--color-border, #393a3b);
+  color: var(--color-text, #e4e6eb);
+}
+
+@keyframes tipPopIn {
+  from { transform: scale(0.92) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.tip-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border, #e4e6eb);
+}
+
+body[data-theme="dark"] .tip-modal-header {
+  border-bottom-color: var(--color-border, #393a3b);
+}
+
+.tip-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tip-icon-sparkle {
+  font-size: 20px;
+}
+
+.tip-header-title h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text, #050505);
+}
+
+body[data-theme="dark"] .tip-header-title h4 {
+  color: var(--color-text, #e4e6eb);
+}
+
+.tip-modal-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-icon, #65676b);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.tip-modal-close-btn:hover {
+  background: var(--color-bg-hover, #f0f2f5);
+}
+
+body[data-theme="dark"] .tip-modal-close-btn:hover {
+  background: var(--color-bg-hover, #3a3b3c);
+  color: #fff;
+}
+
+.tip-modal-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Creator Preview */
+.tip-creator-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: var(--color-bg, #f0f2f5);
+  border-radius: 12px;
+}
+
+body[data-theme="dark"] .tip-creator-preview {
+  background-color: #18191a;
+}
+
+.tip-creator-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tip-creator-info {
+  flex: 1;
+}
+
+.tip-creator-info h6 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text, #050505);
+}
+
+body[data-theme="dark"] .tip-creator-info h6 {
+  color: var(--color-text, #e4e6eb);
+}
+
+.tip-creator-info span {
+  font-size: 12px;
+  color: var(--color-text-secondary, #65676b);
+}
+
+body[data-theme="dark"] .tip-creator-info span {
+  color: var(--color-text-secondary, #b0b3b8);
+}
+
+.tip-fee-pill {
+  font-size: 11px;
+  font-weight: 700;
+  background-color: rgba(49, 162, 76, 0.15);
+  color: #31a24c;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+/* Payment Method */
+.tip-method-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.method-pill {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #e4e6eb);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #050505);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+body[data-theme="dark"] .method-pill {
+  background: #242526;
+  border-color: #393a3b;
+  color: #e4e6eb;
+}
+
+.method-pill.active {
+  border-color: var(--color-primary, #1877f2);
+  background: rgba(24, 119, 242, 0.08);
+  color: var(--color-primary, #1877f2);
+}
+
+body[data-theme="dark"] .method-pill.active {
+  border-color: #2d88ff;
+  background: rgba(45, 136, 255, 0.15);
+  color: #2d88ff;
+}
+
+/* Amount Grid */
+.tip-amount-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.amount-btn {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-border, #e4e6eb);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #050505);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+body[data-theme="dark"] .amount-btn {
+  background: #18191a;
+  border-color: #393a3b;
+  color: #e4e6eb;
+}
+
+.amount-btn:hover {
+  background: var(--color-bg-hover, #f0f2f5);
+}
+
+body[data-theme="dark"] .amount-btn:hover {
+  background: #2f3031;
+}
+
+.amount-btn.selected {
+  border-color: var(--color-primary, #1877f2);
+  background: rgba(24, 119, 242, 0.12);
+  color: var(--color-primary, #1877f2);
+  transform: scale(1.02);
+}
+
+body[data-theme="dark"] .amount-btn.selected {
+  border-color: #2d88ff;
+  background: rgba(45, 136, 255, 0.2);
+  color: #2d88ff;
+}
+
+/* Custom Input */
+.custom-tip-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 12px;
+  font-weight: 700;
+  color: var(--color-text-secondary, #65676b);
+}
+
+.custom-tip-input {
+  width: 100%;
+  padding: 9px 12px 9px 28px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #e4e6eb);
+  background: var(--color-bg, #f0f2f5);
+  color: var(--color-text, #050505);
+  font-size: 14px;
+  outline: none;
+}
+
+body[data-theme="dark"] .custom-tip-input {
+  background: #18191a;
+  border-color: #393a3b;
+  color: #e4e6eb;
+}
+
+.custom-tip-input:focus {
+  border-color: var(--color-primary, #1877f2);
+}
+
+/* Cheer Msg */
+.tip-msg-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tip-input-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary, #65676b);
+}
+
+.tip-msg-input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #e4e6eb);
+  background: var(--color-bg, #f0f2f5);
+  color: var(--color-text, #050505);
+  font-size: 13.5px;
+  outline: none;
+}
+
+body[data-theme="dark"] .tip-msg-input {
+  background: #18191a;
+  border-color: #393a3b;
+  color: #e4e6eb;
+}
+
+/* Submit Button */
+.btn-send-tip {
+  background: linear-gradient(135deg, #1877f2 0%, #00d2ff 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-send-tip:hover:not(:disabled) {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+
+.btn-send-tip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tip-trust-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
+  color: var(--color-text-muted, #8a8d91);
+}
+
+/* Success View */
+.tip-success-view {
+  padding: 30px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.confetti-cannon {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  font-size: 24px;
+  animation: confettiFall 1.2s ease-out forwards;
+}
+
+.c1 { top: 10%; left: 20%; animation-delay: 0.1s; }
+.c2 { top: 15%; right: 20%; animation-delay: 0.2s; }
+.c3 { top: 25%; left: 40%; animation-delay: 0.3s; }
+.c4 { top: 30%; right: 35%; animation-delay: 0.15s; }
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(120px) rotate(360deg) scale(1.2); opacity: 0; }
+}
+
+.tip-success-icon-wrap {
+  margin-bottom: 12px;
+}
+
+.tip-success-subtitle {
+  font-size: 14.5px;
+  color: var(--color-text-secondary, #65676b);
+  margin-bottom: 12px;
+}
+
+body[data-theme="dark"] .tip-success-subtitle {
+  color: var(--color-text-secondary, #b0b3b8);
+}
+
+.tip-note-box {
+  background: rgba(24, 119, 242, 0.08);
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  color: var(--color-text, #050505);
+}
+
+body[data-theme="dark"] .tip-note-box {
+  background: rgba(45, 136, 255, 0.12);
+  color: #e4e6eb;
+}
+
+.tip-badge-info {
+  font-size: 12px;
+  color: var(--color-text-muted, #8a8d91);
+}

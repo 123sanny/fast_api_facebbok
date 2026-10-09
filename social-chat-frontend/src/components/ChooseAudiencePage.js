@@ -7,7 +7,7 @@ const AUDIENCE_OPTIONS = [
   {
     id: "public",
     label: "Public",
-    sub: "Anyone on or off Facebook",
+    sub: "Anyone on or off Nexoria",
     icon: <BsGlobe2 size={26} />,
   },
   {
@@ -19,7 +19,7 @@ const AUDIENCE_OPTIONS = [
   {
     id: "friends",
     label: "Friends",
-    sub: "Your friends on Facebook",
+    sub: "Your friends on Nexoria",
     icon: <FaUserFriends size={26} />,
   },
   {
